@@ -1,0 +1,72 @@
+CREATE TABLE graduation
+(
+    학과코드      INT             NOT NULL, 
+    입학년도      INT             NULL, 
+    전공심화      INT             NULL, 
+    전공학점      INT             NULL, 
+    학과기초      INT             NULL, 
+    일반교양      INT             NULL, 
+    필수교양      INT             NULL, 
+    복수전공학점    INT             NULL, 
+    봉사시간      INT             NULL, 
+    봉사교육      VARCHAR2(20)    NULL, 
+    심폐교육      VARCHAR2(20)    NULL, 
+    CONSTRAINT GRADUATION_PK PRIMARY KEY (학과코드, 입학년도)
+);
+
+CREATE TABLE student
+(
+    학번      INT             NOT NULL, 
+    이름      VARCHAR2(20)    NOT NULL, 
+    패스워드    VARCHAR2(20)    NOT NULL, 
+    주전공     INT             NOT NULL, 
+    복수전공    INT             NULL, 
+    입학년도    INT             NOT NULL, 
+    CONSTRAINT STUDENT_PK PRIMARY KEY (학번)
+);
+
+CREATE TABLE subject
+(
+    과목코드    INT             NOT NULL, 
+    과목명     VARCHAR2(20)    NOT NULL, 
+    구분      VARCHAR2(20)    NOT NULL, 
+    학점      INT             NOT NULL, 
+    학년      INT             NOT NULL, 
+    학기      INT             NOT NULL, 
+    학과코드    INT             NOT NULL, 
+    CONSTRAINT SUBJECT_PK PRIMARY KEY (과목코드)
+);
+
+CREATE TABLE 수강이력
+(
+    과목코드    INT    NOT NULL, 
+    학번      INT    NOT NULL, 
+    CONSTRAINT 수강이력_PK PRIMARY KEY (과목코드, 학번)
+);
+
+INSERT INTO graduation (학과코드, 입학년도, 전공심화, 전공학점, 학과기초, 일반교양, 필수교양, 복수전공학점, 봉사시간, 봉사교육, 심폐교육) VALUES (10, 2012, 60, 34, 29, 30, 21, 35, 60, 'T', 'T');
+INSERT INTO graduation (학과코드, 입학년도, 전공심화, 전공학점, 학과기초, 일반교양, 필수교양, 복수전공학점, 봉사시간, 봉사교육, 심폐교육) VALUES (11, 2012, 57, 33, 30, 28, 23, 34, 60, 'T', 'T');
+
+INSERT INTO student (학번, 이름, 패스워드, 주전공, 복수전공, 입학년도) VALUES (20124105, '엄승탁', '1111', 10, NULL, 2012);
+INSERT INTO student (학번, 이름, 패스워드, 주전공, 복수전공, 입학년도) VALUES (20124108, '박승규', '2222', 10, NULL, 2012);
+INSERT INTO student (학번, 이름, 패스워드, 주전공, 복수전공, 입학년도) VALUES (20124109, '최진우', '3333', 10, 11, 2012);
+
+INSERT INTO subject (과목코드, 과목명, 구분, 학점, 학년, 학기, 학과코드) VALUES (01, '데이터베이스', '전공', 03, 03, 02, 10);
+INSERT INTO subject (과목코드, 과목명, 구분, 학점, 학년, 학기, 학과코드) VALUES (02, '컴퓨터네트워크', '전공', 03, 03, 02, 10);
+INSERT INTO subject (과목코드, 과목명, 구분, 학점, 학년, 학기, 학과코드) VALUES (03, '알고리즘', '전공', 03, 02, 02, 10);
+INSERT INTO subject (과목코드, 과목명, 구분, 학점, 학년, 학기, 학과코드) VALUES (04, 'C프로그래밍', '전공', 03, 01, 02, 10);
+INSERT INTO subject (과목코드, 과목명, 구분, 학점, 학년, 학기, 학과코드) VALUES (05, '창의적설계기법', '학과기초', 03, 01, 01, 10);
+INSERT INTO subject (과목코드, 과목명, 구분, 학점, 학년, 학기, 학과코드) VALUES (06, '컴퓨터와현대기술', '학과기초', 02, 01, 01, 10);
+INSERT INTO subject (과목코드, 과목명, 구분, 학점, 학년, 학기, 학과코드) VALUES (07, '유럽문화의이해', '일반교양', 02, 00, 01, 00);
+INSERT INTO subject (과목코드, 과목명, 구분, 학점, 학년, 학기, 학과코드) VALUES (08, '영어1', '필수교양', 02, 01, 01, 00);
+INSERT INTO subject (과목코드, 과목명, 구분, 학점, 학년, 학기, 학과코드) VALUES (09, '회계이론', '전공', 03, 02, 01, 11);
+INSERT INTO subject (과목코드, 과목명, 구분, 학점, 학년, 학기, 학과코드) VALUES (10, '전산처리', '전공', 03, 03, 02, 11);
+
+INSERT INTO 수강이력 (과목코드, 학번) VALUES (20124105, 1);
+INSERT INTO 수강이력 (과목코드, 학번) VALUES (20124105, 3);
+INSERT INTO 수강이력 (과목코드, 학번) VALUES (20124105, 5);
+INSERT INTO 수강이력 (과목코드, 학번) VALUES (20124105, 7);
+INSERT INTO 수강이력 (과목코드, 학번) VALUES (20124105, 8);
+INSERT INTO 수강이력 (과목코드, 학번) VALUES (20124109, 1);
+INSERT INTO 수강이력 (과목코드, 학번) VALUES (20124109, 6);
+INSERT INTO 수강이력 (과목코드, 학번) VALUES (20124109, 9);
