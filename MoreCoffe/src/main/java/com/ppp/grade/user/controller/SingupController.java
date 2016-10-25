@@ -36,6 +36,7 @@ public class SingupController implements Controller {
 		}
 		else{
 			userDAO.insertUser(vo);
+			mav.setViewName("select.jsp");
 		}
 		return mav;
 	}

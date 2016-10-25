@@ -17,9 +17,11 @@
 		<property name="mappings">
 			<props>
 				<prop key="/login.do">login</prop>
+				<prop key="/signup.do">signup</prop>
 			</props>
 		</property>
 	</bean>
 	<bean id="login" class ="com.ppp.grade.user.controller.LoginController"></bean>
+	<bean id="signup" class ="com.ppp.grade.user.controller.SingupController"></bean>
 	
 </beans>
