@@ -22,6 +22,6 @@
 		</property>
 	</bean>
 	<bean id="login" class ="com.ppp.grade.user.controller.LoginController"></bean>
-	<bean id="signup" class ="com.ppp.grade.user.controller.SingupController"></bean>
+	<bean id="signup" class ="com.ppp.grade.user.controller.SignupController"></bean>
 	
 </beans>
