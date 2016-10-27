@@ -28,8 +28,6 @@ public class SignupController implements Controller {
 		UserDAO userDAO = new UserDAO();
 		UserVO user = userDAO.getUser(vo);
 		
-		
-		
 		ModelAndView mav = new ModelAndView();
 		if(user != null){
 			mav.setViewName("signup.jsp");

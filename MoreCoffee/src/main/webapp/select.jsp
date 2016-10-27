@@ -7,6 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>dddddddddddd</h1>
+<ul>
+  <li>전공</li>
+  <li>교양</li>
+  <li>기타</li>
+  <li>등등</li>
+</ul>
+<!-- DB의 값을 출력해보자  -->
+
 </body>
 </html>
