@@ -26,7 +26,7 @@ public class SignupController implements Controller {
 		vo.set주전공(MAJOR);		//나중에 예외처리필요
 		
 		UserDAO userDAO = new UserDAO();
-		UserVO user = userDAO.getUser(vo);
+		UserVO user = userDAO.CheckID(vo);
 		
 		ModelAndView mav = new ModelAndView();
 		if(user != null){

@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
 		http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-4.2.xsd">
-		
-	<!--  xmlns:p="http://www.springframework.org/schma/p"-->
-	
-		
+
+	<!-- xmlns:p="http://www.springframework.org/schma/p" -->
+
 	<context:component-scan base-package="com.ppp.grade.user.controller">
 	</context:component-scan>
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 
-	<bean class = "org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
+
 			<props>
 				<prop key="/login.do">login</prop>
 				<prop key="/signup.do">signup</prop>
+				<prop key="/admin.do">admin</prop>
+				<prop key="/result.do">result</prop>
 			</props>
 		</property>
 	</bean>
-	<bean id="login" class ="com.ppp.grade.user.controller.LoginController"></bean>
-	<bean id="signup" class ="com.ppp.grade.user.controller.SignupController"></bean>
-	
+
+	<bean class="com.ppp.grade.user.controller.LoginController" id="login" />
+	<bean class="com.ppp.grade.user.controller.SignupController" id="signup" />
+	<bean class="com.ppp.grade.subject.controller.SubjectController" id="result" />
+	<bean class="com.ppp.grade.user.controller.UserController" id="admin" />
 </beans>

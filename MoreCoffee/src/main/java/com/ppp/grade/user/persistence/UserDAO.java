@@ -24,6 +24,7 @@ public class UserDAO {
    private final String USER_DELETE = "delete STUDENT where 학번 = ?";
    private final String USER_UPDATE = "update STUDENT set 이름 = ?, 패스워드 =?, 주전공 =?, 복수전공=?, 입학년도 =? where 학번 = ?";
    private final String USER_LIST = "select * from STUDENT order by 학번 desc";
+   private final String CheckID = "select * from STUDENT where 학번=?";
    
    public void insertUser(UserVO vo){
       System.out.println("===> JEBC insertUser()");
@@ -122,5 +123,29 @@ public class UserDAO {
 		   JDBCUtil.close(stmt, conn);
 	   }
 	   return userList;
-   }   
+   }
+   public UserVO CheckID(UserVO vo){
+	      UserVO user = null;
+	      try{
+	         System.out.println("===> JDBC CheckID()");
+	         conn = JDBCUtil.getConnection();
+	         stmt = conn.prepareStatement(CheckID);
+	         stmt.setString(1,  vo.get학번());
+	         rs = stmt.executeQuery();
+	         if ( rs.next()){
+	            user = new UserVO();
+	            user.set학번(rs.getString("학번"));
+	            user.set이름(rs.getString("이름"));
+	            user.set패스워드(rs.getString("패스워드"));
+	            user.set주전공(rs.getString("주전공"));
+	            user.set복수전공(rs.getString("복수전공"));
+	            user.set입학년도(rs.getString("입학년도"));
+	         }
+	      }catch(Exception e){
+	         e.printStackTrace();
+	      }finally{
+	         JDBCUtil.close(rs, stmt, conn);
+	      }
+	      return user;
+	   }
 }

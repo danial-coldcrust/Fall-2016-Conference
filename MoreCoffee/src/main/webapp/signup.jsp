@@ -103,7 +103,7 @@ body {
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>х╦©Ь╟║ют</title>
+<title>М ▄Л⌡░Й╟─Л·┘</title>
 </head>
 <body>
 <div class="login-page">
@@ -129,10 +129,10 @@ body {
       	<tr>
       		<td></td>
       		<td>
-      		<input id="loginbutton" type="submit" value="╟║ют" /> 
+      		<input id="loginbutton" type="submit" value="Й╟─Л·┘" /> 
     </form>
     <form class="login-form" action="login.do" method="post">
-      		<input id="loginbutton" type="submit" value="цК╪р" /> </td>
+      		<input id="loginbutton" type="submit" value="Л╥╗Л├▄" /> </td>
     </form>
       	</tr>
       </table>      	

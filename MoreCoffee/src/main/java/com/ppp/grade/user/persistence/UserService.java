@@ -8,4 +8,5 @@ public interface UserService {
 	public void updateUser(UserVO vo);
 	public void deleteUser(UserVO vo);
 	public List<UserVO> getUserList(UserVO vo);
+	public UserVO CheckID(UserVO vo);
 }

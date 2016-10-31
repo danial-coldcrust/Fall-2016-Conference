@@ -28,5 +28,8 @@ public class UserServiceImpl implements UserService {
 	public List<UserVO> getUserList(UserVO vo) {
 		return userDAO.getUserList(vo);
 	}
+	public UserVO CheckID(UserVO vo){
+		return userDAO.CheckID(vo);
+	}
 
 }
