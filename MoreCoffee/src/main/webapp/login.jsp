@@ -106,7 +106,7 @@ body {
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>占싸깍옙占쏙옙</title>
+<title>로그인</title>
 </head>
 <body>
 <div class="login-page">
@@ -114,7 +114,7 @@ body {
     <form class="login-form" action="login.do" method="post">
       <input type="text" name="username"/>
       <input type="password" name="password"/>
-      <input id="loginbutton" type="submit" value="占싸깍옙占쏙옙" />
+      <input id="loginbutton" type="submit" value="로그인" />
       <p class="message">Not registered? <a href="signup.jsp">Create an account</a></p>
     </form>
   </div>

@@ -23,14 +23,12 @@ public class UserController implements Controller {
 		String i패스워드 = request.getParameter("i패스워드");
 		String i주전공 = request.getParameter("i주전공");
 		String i복수전공 = request.getParameter("i복수전공");
-		String i입학년도 = request.getParameter("i입학년도");
 		
 		String u학번 = request.getParameter("u학번");
 		String u이름 = request.getParameter("u이름");
 		String u패스워드 = request.getParameter("u패스워드");
 		String u주전공 = request.getParameter("u주전공");
 		String u복수전공 = request.getParameter("u복수전공");
-		String u입학년도 = request.getParameter("u입학년도");
 		
 		String s학번 = request.getParameter("s학번");
 		
@@ -42,7 +40,6 @@ public class UserController implements Controller {
 		insert.set패스워드(i패스워드);
 		insert.set주전공(i주전공);
 		insert.set복수전공(i복수전공);
-		insert.set입학년도(i입학년도);
 		
 		UserVO update = new UserVO();
 		update.set학번(u학번);
@@ -50,7 +47,6 @@ public class UserController implements Controller {
 		update.set패스워드(u패스워드);
 		update.set주전공(u주전공);
 		update.set복수전공(u복수전공);
-		update.set입학년도(u입학년도);
 		
 		UserVO select = new UserVO();
 		select.set학번(s학번);

@@ -19,12 +19,12 @@ public class UserDAO {
    private Connection conn = null;
    private PreparedStatement stmt = null;
    private ResultSet rs = null;
-   private final String USER_INSERT = "insert into STUDENT(학번, 이름, 패스워드, 주전공, 복수전공, 입학년도) values(?,?,?,?,?,?)";
-   private final String USER_GET = "select * from STUDENT where 학번=? and 패스워드=?";
-   private final String USER_DELETE = "delete STUDENT where 학번 = ?";
-   private final String USER_UPDATE = "update STUDENT set 이름 = ?, 패스워드 =?, 주전공 =?, 복수전공=?, 입학년도 =? where 학번 = ?";
-   private final String USER_LIST = "select * from STUDENT order by 학번 desc";
-   private final String CheckID = "select * from STUDENT where 학번=?";
+   private final String USER_INSERT = "insert into 학생(학번, 이름, 패스워드, 주전공, 복수전공) values(?,?,?,?,?)";
+   private final String USER_GET = "select * from 학생 where 학번=? and 패스워드=?";
+   private final String USER_DELETE = "delete 학생 where 학번 = ?";
+   private final String USER_UPDATE = "update 학생 set 이름 = ?, 패스워드 =?, 주전공 =?, 복수전공=? where 학번 = ?";
+   private final String USER_LIST = "select * from 학생 order by 학번 desc";
+   private final String CheckID = "select * from 학생 where 학번=?";
    
    public void insertUser(UserVO vo){
       System.out.println("===> JEBC insertUser()");
@@ -36,7 +36,6 @@ public class UserDAO {
          stmt.setString(3, vo.get패스워드());
          stmt.setString(4, vo.get주전공());
          stmt.setString(5, null);
-         stmt.setString(6, vo.get학번().substring(0, 4));
          stmt.executeUpdate();
       }catch(Exception e){
          e.printStackTrace();
@@ -60,7 +59,6 @@ public class UserDAO {
             user.set패스워드(rs.getString("패스워드"));
             user.set주전공(rs.getString("주전공"));
             user.set복수전공(rs.getString("복수전공"));
-            user.set입학년도(rs.getString("입학년도"));
          }
       }catch(Exception e){
          e.printStackTrace();
@@ -78,7 +76,6 @@ public class UserDAO {
 		   stmt.setString(2, vo.get패스워드());
 		   stmt.setString(3, vo.get주전공());
 		   stmt.setString(4, vo.get복수전공());
-		   stmt.setString(5, vo.get입학년도());
 		   stmt.setString(6, vo.get학번());
 		   stmt.executeUpdate();
 	   }catch(Exception e){
@@ -114,7 +111,6 @@ public class UserDAO {
 			   user.set패스워드(rs.getString("패스워드"));
 			   user.set주전공(rs.getString("주전공"));
 			   user.set복수전공(rs.getString("복수전공"));
-			   user.set입학년도(rs.getString("입학년도"));
 			   userList.add(user);
 		   }
 	   }catch(Exception e){
@@ -139,7 +135,6 @@ public class UserDAO {
 	            user.set패스워드(rs.getString("패스워드"));
 	            user.set주전공(rs.getString("주전공"));
 	            user.set복수전공(rs.getString("복수전공"));
-	            user.set입학년도(rs.getString("입학년도"));
 	         }
 	      }catch(Exception e){
 	         e.printStackTrace();

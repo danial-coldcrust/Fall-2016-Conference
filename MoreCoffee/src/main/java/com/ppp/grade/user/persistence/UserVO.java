@@ -6,7 +6,6 @@ public class UserVO {
    private String 패스워드;
    private String 주전공;
    private String 복수전공;
-   private String 입학년도;
    
    
    public String get학번() {
@@ -59,19 +58,9 @@ public class UserVO {
    }
 
 
-   public String get입학년도() {
-      return 입학년도;
-   }
-
-
-   public void set입학년도(String 입학년도) {
-      this.입학년도 = 입학년도;
-   }
-
-
    @Override
    public String toString(){
-      return "UserVO [학번은 " + 학번 + ", 이름 = " + 이름 + ", 패스워드 = " + 패스워드 + ", 주전공 = " + 주전공 + ", 복수전공 = " + 복수전공 + ", 입학년도 = " + 입학년도 + "]";
+      return "UserVO [학번은 " + 학번 + ", 이름 = " + 이름 + ", 패스워드 = " + 패스워드 + ", 주전공 = " + 주전공 + ", 복수전공 = " + 복수전공 + "]";
    }
    
 }

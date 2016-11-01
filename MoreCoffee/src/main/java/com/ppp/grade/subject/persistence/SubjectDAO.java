@@ -15,8 +15,8 @@ public class SubjectDAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-	private final String SUB_GET_MAJOR_NUM = "select * from SUBJECT where 학과코드=?";
-	private final String SUB_GET_SUBJECT_NUM = "select * from SUBJECT where 과목코드=?";
+	private final String SUB_GET_MAJOR_NUM = "select * from 과목 where 학과코드=?";
+	private final String SUB_GET_SUBJECT_NUM = "select * from 과목 where 과목코드=?";
 
 	/* 학과코드로 과목 조회 */
 	public List<SubjectVO> getSubjectWithMajorNum(String MajorNum) {

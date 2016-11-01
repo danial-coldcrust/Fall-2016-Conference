@@ -24,7 +24,6 @@
 	      <input type="text" name="i패스워드"/>
 	      <input type="text" name="i주전공"/>
 	      <input type="text" name="i복수전공"/>
-	      <input type="text" name="i입학년도"/>
 	     <input id="loginbutton" type="submit" value="추가" /> 
 	    </form>
 	</center>
@@ -36,7 +35,6 @@
 	      <input type="text" name="u패스워드"/>
 	      <input type="text" name="u주전공"/>
 	      <input type="text" name="u복수전공"/>
-	      <input type="text" name="u입학년도"/>
 	      <input id="loginbutton" type="submit" value="수정" /> 
 	    </form>
 	</center>
@@ -63,7 +61,6 @@
 					<th bgcolor="4D95C9" width = "200">패스워드</th>
 					<th bgcolor="4D95C9" width = "200">주전공</th>
 					<th bgcolor="4D95C9" width = "200">복수전공</th>
-					<th bgcolor="4D95C9" width = "200">입학년도</th>
 				</tr>
 				<% for(UserVO obj : userList) { %>
 				<tr>
@@ -72,7 +69,6 @@
 					<td align = "center"><%= obj.get패스워드() %></td>
 					<td align = "center"><%= obj.get주전공() %></td>
 					<td align = "center"><%= obj.get복수전공() %></td>
-					<td align = "center"><%= obj.get입학년도() %></td>
 				</tr>
 				<% } %>
 			</table>
