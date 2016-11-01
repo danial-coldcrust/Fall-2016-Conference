@@ -18,12 +18,14 @@ public class SignupController implements Controller {
 		String PWD = request.getParameter("password");
 		String NAME = request.getParameter("name");
 		String MAJOR = request.getParameter("major");
+		String MINOR = request.getParameter("minor");
 		
 		UserVO vo = new UserVO();
 		vo.set학번(ID);
 		vo.set패스워드(PWD);
 		vo.set이름(NAME);
 		vo.set주전공(MAJOR);		//나중에 예외처리필요
+		vo.set복수전공(MINOR);
 		
 		UserDAO userDAO = new UserDAO();
 		UserVO user = userDAO.CheckID(vo);

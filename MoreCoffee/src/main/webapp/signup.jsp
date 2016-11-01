@@ -127,6 +127,10 @@ body {
       		<td><input type="text" name="major"/></td>
       	</tr>
       	<tr>
+      		<td class="message"> MINOR : </td>
+      		<td><input type="text" name="minor"/></td>
+      	</tr>
+      	<tr>
       		<td></td>
       		<td>
       		<input id="loginbutton" type="submit" value="가입" /> 

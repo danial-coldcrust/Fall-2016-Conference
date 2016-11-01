@@ -35,7 +35,7 @@ public class UserDAO {
          stmt.setString(2, vo.get이름());
          stmt.setString(3, vo.get패스워드());
          stmt.setString(4, vo.get주전공());
-         stmt.setString(5, null);
+         stmt.setString(5, vo.get복수전공());
          stmt.executeUpdate();
       }catch(Exception e){
          e.printStackTrace();
@@ -72,11 +72,11 @@ public class UserDAO {
 	   try{
 		   conn = JDBCUtil.getConnection();
 		   stmt = conn.prepareStatement(USER_UPDATE);
-		   stmt.setString(1, vo.get이름());
-		   stmt.setString(2, vo.get패스워드());
-		   stmt.setString(3, vo.get주전공());
-		   stmt.setString(4, vo.get복수전공());
-		   stmt.setString(6, vo.get학번());
+		   stmt.setString(1, vo.get학번());
+		   stmt.setString(2, vo.get이름());
+		   stmt.setString(3, vo.get패스워드());
+		   stmt.setString(4, vo.get주전공());
+		   stmt.setString(5, vo.get복수전공());
 		   stmt.executeUpdate();
 	   }catch(Exception e){
 		   e.printStackTrace();
