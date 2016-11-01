@@ -36,7 +36,8 @@ public class SignupController implements Controller {
 		}
 		else{
 			userDAO.insertUser(vo);
-			mav.setViewName("select.jsp");
+			
+			mav.setViewName("login.jsp");
 		}
 		return mav;
 	}

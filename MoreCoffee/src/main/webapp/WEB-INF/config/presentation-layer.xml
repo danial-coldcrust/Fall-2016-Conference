@@ -27,4 +27,5 @@
 	<bean class="com.ppp.grade.user.controller.SignupController" id="signup" />
 	<bean class="com.ppp.grade.subject.controller.SubjectController" id="result" />
 	<bean class="com.ppp.grade.user.controller.UserController" id="admin" />
+
 </beans>
