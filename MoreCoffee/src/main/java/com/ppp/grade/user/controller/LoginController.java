@@ -44,9 +44,10 @@ public class LoginController implements Controller {
 	}
 
 	 public Boolean StringEqualList(String studentNum, List<SelectVO> selectList) {
-
 	      for (SelectVO object : selectList) {
 	         if (object == selectList.get(0)) {
+	        	 System.out.println(object);
+	        	 System.out.println(selectList.get(0));
 	            return true;
 	         }
 	      }
@@ -99,7 +100,7 @@ public class LoginController implements Controller {
 			//회원일 때 수강이력테이블에서 학번들 가져옴(비교하기위해)
 			LoginController loginController = new LoginController();
 			SelectDAO selectDAO = new SelectDAO(); 
-			List<SelectVO> selectList = selectDAO.getStudentNum();
+			List<SelectVO> selectList = selectDAO.getStudentNum(num);
 			
 			
 			// 관리자
@@ -108,9 +109,10 @@ public class LoginController implements Controller {
 			}
 			// 회원
 			else if (loginController.StringEqualList(user.get학번(),selectList)) {
+				System.out.println("오류난당");
 				mav.setViewName("subjectside.do"); 
 				}
-			// 비회원
+			// 정보 x 회원
 			else {
 				
 				mav.setViewName("select.jsp");

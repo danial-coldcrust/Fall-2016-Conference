@@ -28,8 +28,8 @@
 	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	crossorigin="anonymous"></script>
 
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="css/cover.css">
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="resources/css/cover.css">
 
 </head>
 
@@ -42,11 +42,9 @@
 			<h2 class="form-signin-heading">LOGIN</h2>
 			<center>
 				<div class="form-group">
-					<label for="inputID" 
-						class="sr-only">아이디</label> <input type="text"
+					<label for="inputID" class="sr-only">아이디</label> <input type="text"
 						class="form-control" placeholder="ID" required autofocus
-						name="username"/ > 
-					<label for="inputPassword"
+						name="username"/ > <label for="inputPassword"
 						class="sr-only">패스워드</label> <input type="password"
 						class="form-control" placeholder="Password" required
 						name="password" />
@@ -58,7 +56,7 @@
 			</center>
 		</form>
 
-		<form class="form-signin form-horizontal" role="form">
+		<form class="form-signin form-horizontal" role="form" action="signup.do">
 			<center>
 				<button type="button"
 					class="btn btn-lg btn-primary btn-block btn btn-success"
@@ -70,18 +68,17 @@
 								<div class="form-group">
 									<strong>회원 가입</strong>
 									<div style="text-align: left">
-										학과 <select class="form-control">
+										학과 <select class="form-control" name = "major">
 											<option>학과 선택</option>
 											<option>컴퓨터공학과</option>
 											<option>특수교육과</option>
 											<option>수학과</option>
 											<option>영화애니메이션학과</option>
 											<option>컴퓨터소프웨어공학과</option>
-											<option>연극무용학과</option>
-										</select> 학번 <input type="text" class="form-control" placeholder="학번" />
-										이름 <input type="text" class="form-control" placeholder="이름" />
-										비밀번호 <input type="password" class="form-control"
-											placeholder="비밀번호" />
+											<option>연극무용학과</option></select>
+										학번 <input type="text" class="form-control" placeholder="학번"  name = "snum"/>
+										이름 <input type="text" class="form-control" placeholder="이름" name = "name"/>
+										비밀번호 <input type="password" class="form-control"placeholder="비밀번호" name = "password"/>
 									</div>
 								</div>
 							</div>
@@ -99,7 +96,7 @@
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
 
 </body>
 </html>

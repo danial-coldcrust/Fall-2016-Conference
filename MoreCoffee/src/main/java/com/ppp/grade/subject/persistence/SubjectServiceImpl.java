@@ -25,4 +25,21 @@ public class SubjectServiceImpl implements SubjectService {
    public  List<SubjectVO> getSubjectWithMinorNum(String MinorNum){
 	   return SubjectDAO.getSubjectWithMinorNum(MinorNum);
    }
+public void insertSubject(SubjectVO vo) {
+		SubjectDAO.insertSubject(vo);
+	}
+	public SubjectVO getSubject(SubjectVO vo){
+		return SubjectDAO.getSubject(vo);
+	}
+	public void updateSubject(SubjectVO vo) {
+		SubjectDAO.updateSubject(vo);
+	}
+
+	public void deleteSubject(SubjectVO vo) {
+		SubjectDAO.deleteSubject(vo);
+	}
+
+	public List<SubjectVO> getSubjectList(SubjectVO vo) {
+		return SubjectDAO.getSubjectList(vo);
+	}
 }
