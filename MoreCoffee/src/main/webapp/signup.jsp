@@ -103,7 +103,7 @@ body {
 }
 </style>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>М ▄Л⌡░Й╟─Л·┘</title>
+<title>х╦©Ь╟║ют</title>
 </head>
 <body>
 <div class="login-page">
@@ -127,16 +127,12 @@ body {
       		<td><input type="text" name="major"/></td>
       	</tr>
       	<tr>
-      		<td class="message"> MINOR : </td>
-      		<td><input type="text" name="minor"/></td>
-      	</tr>
-      	<tr>
       		<td></td>
       		<td>
-      		<input id="loginbutton" type="submit" value="Й╟─Л·┘" /> 
+      		<input id="loginbutton" type="submit" value="╟║ют" /> 
     </form>
     <form class="login-form" action="login.do" method="post">
-      		<input id="loginbutton" type="submit" value="Л╥╗Л├▄" /> </td>
+      		<input id="loginbutton" type="submit" value="цК╪р" /> </td>
     </form>
       	</tr>
       </table>      	

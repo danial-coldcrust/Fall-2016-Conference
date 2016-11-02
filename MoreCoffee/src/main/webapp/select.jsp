@@ -15,9 +15,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	 <form method="post" action="result.do">
-	 
+	<form method="post" action="result.do">
 		<input type="hidden" name="num" value=<%=num%>>
 		<table border="1" cellpadding="0" cellspacing="0" align="center">
 			<%
@@ -58,6 +56,12 @@
 			%>
 		</table>
 		<input type="submit" name="submit" value="결과보기">
-	</form> 
+	</form>
+	
+	<form method="post" action="user_repair.do">
+	<!--승탁이추가 여기부터  -->
+		<input type="submit" name="repair_sumbit" value="회원정보수정">
+	<!--여기까지  -->
+	</from>
 </body>
 </html>

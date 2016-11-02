@@ -15,7 +15,12 @@ import com.ppp.grade.user.persistence.UserDAO;
 import com.ppp.grade.user.persistence.UserVO;
 
 public class LoginController implements Controller {
-
+	static String stu_name;
+	static String stu_password;
+	static String stu_id;
+	static String stu_major;
+	static String stu_submajor;
+			
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
 		
@@ -30,6 +35,14 @@ public class LoginController implements Controller {
 		
 		ModelAndView mav = new ModelAndView();
 		if(user != null){
+			//값 저장 해보는 부분
+			stu_name = user.get이름();
+			stu_password = user.get패스워드();
+			stu_id = user.get학번();
+			stu_major = user.get주전공();
+			stu_submajor = user.get복수전공();
+			System.out.println(stu_name);
+			//여기까지
 			
 			SubjectDAO subjectDAO = new SubjectDAO();
 			//전공
@@ -57,4 +70,27 @@ public class LoginController implements Controller {
 		}
 		return mav;
 	}
+
+
+	public static String getStu_name() {
+		return stu_name;
+	}
+
+	public static String getStu_id() {
+		return stu_id;
+	}
+
+	public static String getStu_major() {
+		return stu_major;
+	}
+
+	public static String getStu_submajor() {
+		return stu_submajor;
+	}
+
+	public static String getStu_password() {
+		// TODO Auto-generated method stub
+		return stu_password;
+	}
+
 }

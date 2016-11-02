@@ -1,123 +1,105 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="ko">
 <head>
-<style>
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
 
-.login-page {
-  width: 360px;
-  padding: 8% 0 0;
-  margin: auto;
-}
-.form {
-  position: relative;
-  z-index: 1;
-  background: #FFFFFF;
-  max-width: 360px;
-  margin: 0 auto 100px;
-  padding: 45px;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-}
-.form input {
-  font-family: "Roboto", sans-serif;
-  outline: 0;
-  background: #f2f2f2;
-  width: 100%;
-  border: 0;
-  margin: 0 0 15px;
-  padding: 15px;
-  box-sizing: border-box;
-  font-size: 14px;
-}
-#loginbutton{
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #4CAF50;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-}
-.form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
-}
-.form .message {
-  margin: 15px 0 0;
-  color: #b3b3b3;
-  font-size: 12px;
-}
-.form .message a {
-  color: #4CAF50;
-  text-decoration: none;
-}
-.form .register-form {
-  display: none;
-}
-.container {
-  position: relative;
-  z-index: 1;
-  max-width: 300px;
-  margin: 0 auto;
-}
-.container:before, .container:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.container .info {
-  margin: 50px auto;
-  text-align: center;
-}
-.container .info h1 {
-  margin: 0 0 15px;
-  padding: 0;
-  font-size: 36px;
-  font-weight: 300;
-  color: #1a1a1a;
-}
-.container .info span {
-  color: #4d4d4d;
-  font-size: 12px;
-}
-.container .info span a {
-  color: #000000;
-  text-decoration: none;
-}
-.container .info span .fa {
-  color: #EF3B3A;
-}
-body {
-  background: #76b852; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
-  background: -moz-linear-gradient(right, #76b852, #8DC26F);
-  background: -o-linear-gradient(right, #76b852, #8DC26F);
-  background: linear-gradient(to left, #76b852, #8DC26F);
-  font-family: "Roboto", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
-}
-</style>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>로그인</title>
+<title>졸업사정 FOR SCH STUDENT</title>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+	integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	crossorigin="anonymous"></script>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/cover.css">
+
 </head>
+
 <body>
-<div class="login-page">
-  <div class="form">
-    <form class="login-form" action="login.do" method="post">
-      <input type="text" name="username"/>
-      <input type="password" name="password"/>
-      <input id="loginbutton" type="submit" value="로그인" />
-      <p class="message">Not registered? <a href="signup.jsp">Create an account</a></p>
-    </form>
-  </div>
-</div>
+	<img src="school.jpg" width="400" height="100" />
+	<div class="container">
+		<form class="form-signin form-horizontal" action="login.do"
+			method="post">
+			<h2 class="form-signin-heading">졸&nbsp;&nbsp;&nbsp;업&nbsp;&nbsp;&nbsp;사&nbsp;&nbsp;&nbsp;정</h2>
+			<h2 class="form-signin-heading">LOGIN</h2>
+			<center>
+				<div class="form-group">
+					<label for="inputID" 
+						class="sr-only">아이디</label> <input type="text"
+						class="form-control" placeholder="ID" required autofocus
+						name="username"/ > 
+					<label for="inputPassword"
+						class="sr-only">패스워드</label> <input type="password"
+						class="form-control" placeholder="Password" required
+						name="password" />
+				</div>
+				<div>
+					<button class="btn btn-lg btn-primary btn-block" type="submit">로그인</button>
+				</div>
+
+			</center>
+		</form>
+
+		<form class="form-signin form-horizontal" role="form">
+			<center>
+				<button type="button"
+					class="btn btn-lg btn-primary btn-block btn btn-success"
+					data-toggle="modal" data-target="#popUpWindow">회원가입</button>
+				<div class="modal fade" id="popUpWindow" tabindex="-1">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">
+								<div class="form-group">
+									<strong>회원 가입</strong>
+									<div style="text-align: left">
+										학과 <select class="form-control">
+											<option>학과 선택</option>
+											<option>컴퓨터공학과</option>
+											<option>특수교육과</option>
+											<option>수학과</option>
+											<option>영화애니메이션학과</option>
+											<option>컴퓨터소프웨어공학과</option>
+											<option>연극무용학과</option>
+										</select> 학번 <input type="text" class="form-control" placeholder="학번" />
+										이름 <input type="text" class="form-control" placeholder="이름" />
+										비밀번호 <input type="password" class="form-control"
+											placeholder="비밀번호" />
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<center>
+									<button class="btn btn-primary btn-block">가입</button>
+								</center>
+							</div>
+						</div>
+					</div>
+				</div>
+			</center>
+		</form>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+
 </body>
 </html>
