@@ -21,6 +21,7 @@
 				<prop key="/result.do">result</prop>
 				<prop key="/user_repair.do">user_repair</prop>
 				<prop key="/userrepairproccontroller.do">user_repair_proc</prop>
+				<prop key="/subjectside.do">subjectside</prop>
 			</props>
 		</property>
 	</bean>
@@ -31,5 +32,5 @@
 	<bean class="com.ppp.grade.user.controller.UserController" id="admin" />
 	<bean class="com.ppp.grade.user_repair.controller.UserRepairController" id="user_repair"/>
 	<bean class="com.ppp.grade.user_repair.controller.UserRepairProcController" id="user_repair_proc"/>
-
+	<bean class="com.ppp.grade.subject.controller.SubjectSideController" id="subjectside" />
 </beans>

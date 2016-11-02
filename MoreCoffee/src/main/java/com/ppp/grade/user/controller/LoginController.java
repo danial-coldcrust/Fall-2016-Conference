@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import com.ppp.grade.select.persistence.SelectDAO;
+import com.ppp.grade.select.persistence.SelectVO;
 import com.ppp.grade.subject.persistence.SubjectDAO;
 import com.ppp.grade.subject.persistence.SubjectVO;
 import com.ppp.grade.user.persistence.UserDAO;
@@ -40,6 +42,16 @@ public class LoginController implements Controller {
 	public static String getStu_전공() {
 		return stu_전공;
 	}
+
+	 public Boolean StringEqualList(String studentNum, List<SelectVO> selectList) {
+
+	      for (SelectVO object : selectList) {
+	         if (object == selectList.get(0)) {
+	            return true;
+	         }
+	      }
+	      return false;
+	   }
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
@@ -84,10 +96,23 @@ public class LoginController implements Controller {
 			//학번
 			mav.addObject("num",num);
 			
+			//회원일 때 수강이력테이블에서 학번들 가져옴(비교하기위해)
+			LoginController loginController = new LoginController();
+			SelectDAO selectDAO = new SelectDAO(); 
+			List<SelectVO> selectList = selectDAO.getStudentNum();
+			
+			
+			// 관리자
 			if(user.get학번().equals("0")){
 				mav.setViewName("admin.do");
 			}
+			// 회원
+			else if (loginController.StringEqualList(user.get학번(),selectList)) {
+				mav.setViewName("subjectside.do"); 
+				}
+			// 비회원
 			else {
+				
 				mav.setViewName("select.jsp");
 			}
 		}else{

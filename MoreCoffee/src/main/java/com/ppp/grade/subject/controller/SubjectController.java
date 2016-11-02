@@ -26,8 +26,14 @@ public class SubjectController implements Controller {
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws UnsupportedEncodingException {
+		//전공 변수
 		int majorSum = 0;
-		int generalSum = 0;
+		//학과기초 변수
+		int majorbaseSum = 0;
+		//일반교양 변수
+		int generalSum1 = 0;
+		//필수교양 변수
+		int generalSum2 = 0;
 		//부전공용 계산 변수
 		int minorSum = 0;
 		String str[] = request.getParameterValues("subject");
@@ -53,16 +59,22 @@ public class SubjectController implements Controller {
 		String MajorNum = subjectList.get(0).get학과코드();
 
 		for (SubjectVO obj : subjectList) {
-			if (obj.get학과코드().equals("99")) {
+			if (obj.get구분().equals("일반교양")) {
 				System.out.println("교양과목");
-				generalSum += Integer.parseInt(obj.get학점());
+				generalSum1 += Integer.parseInt(obj.get학점());
+			}
+			else if((obj.get구분().equals("필수교양"))){
+				generalSum2 += Integer.parseInt(obj.get학점());
 			}
 			//전공학과코드가 아니면 부전공에 더해줍니다.
-			else if((obj.get학과코드()==MajorNum) && obj.get학과코드()!="99"){
+			else if((obj.get학과코드()==MajorNum)&&(obj.get구분() != "학과기초")){
 				majorSum += Integer.parseInt(obj.get학점());
 			}
-			else {
+			else if((obj.get구분().equals("전공")) && (obj.get학과코드() != MajorNum)){
 				minorSum += Integer.parseInt(obj.get학점());
+			}
+			else if((obj.get구분().equals("학과기초"))&&(obj.get학과코드()==MajorNum)){
+				majorbaseSum +=Integer.parseInt(obj.get학점());
 			}
 		}
 		System.out.println("주전공 =" +majorSum);
@@ -85,7 +97,9 @@ public class SubjectController implements Controller {
 	
 			// 3. 연산
 			mav.addObject("Majorresult", (Integer.parseInt(graduation.get전공심화()) - majorSum)+"");
-			mav.addObject("Generalresult", (Integer.parseInt(graduation.get일반교양()) - generalSum)+"");
+			mav.addObject("Generalresult1", (Integer.parseInt(graduation.get일반교양()) - generalSum1)+"");
+			mav.addObject("Generalresult2", (Integer.parseInt(graduation.get필수교양()) - generalSum2)+"");
+			mav.addObject("Majorbaseresult", (Integer.parseInt(graduation.get학과기초()) - majorbaseSum)+"");
 			mav.setViewName("result.jsp");
 			
 		
@@ -106,8 +120,10 @@ public class SubjectController implements Controller {
 	
 			// 3. 연산
 			mav.addObject("Majorresult", (Integer.parseInt(minortable.get전공학점()) - majorSum)+"");
+			mav.addObject("Majorbaseresult", (Integer.parseInt(graduation.get학과기초()) - majorbaseSum)+"");
 			mav.addObject("Minorresult", (Integer.parseInt(minortable.get복수전공학점()) - minorSum)+"");
-			mav.addObject("Generalresult", (Integer.parseInt(graduation.get일반교양()) - generalSum)+"");
+			mav.addObject("Generalresult1", (Integer.parseInt(graduation.get일반교양()) - generalSum1)+"");
+			mav.addObject("Generalresult2", (Integer.parseInt(graduation.get필수교양()) - generalSum2)+"");
 			mav.setViewName("result.jsp");
 			
 		

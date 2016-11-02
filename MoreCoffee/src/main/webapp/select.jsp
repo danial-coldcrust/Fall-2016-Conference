@@ -7,7 +7,7 @@
 	List<SubjectVO> subjectList = (List) request.getAttribute("subjectList");
 	List<SubjectVO> subjectList2 = (List) request.getAttribute("subjectList2");
 	List<SubjectVO> subjectList3 = (List) request.getAttribute("subjectList3");
-	String num = (String)request.getAttribute("num");
+	String studentNum = (String)request.getAttribute("num");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -19,7 +19,7 @@
 
 	 <form method="post" action="result.do">
 	 
-		<input type="hidden" name="num" value=<%=num%>>
+		<input type="hidden" name="num" value=<%=studentNum%>>
 		<table border="1" cellpadding="0" cellspacing="0" align="center">
 			<%
 				for (SubjectVO obj : subjectList) {
