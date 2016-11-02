@@ -8,6 +8,7 @@ public interface SubjectService {
 
    public void setSubjectDAO(SubjectDAO userDAO);
    public  List<SubjectVO> getSubjectWithMajorNum(String MajorNum);
+   public  List<SubjectVO> getSubjectWithMinorNum(String MinorNum);
    public  List<SubjectVO> getSubjectWithSubjectNum(String[] SubjectNum);
       
 }

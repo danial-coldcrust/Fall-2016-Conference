@@ -12,20 +12,24 @@ import org.springframework.web.servlet.mvc.Controller;
 
 import com.ppp.grade.graduation.persistence.GraduationDAO;
 import com.ppp.grade.graduation.persistence.GraduationVO;
+import com.ppp.grade.minortable.persistence.MinortableDAO;
+import com.ppp.grade.minortable.persistence.MinortableVO;
 import com.ppp.grade.select.persistence.SelectDAO;
 import com.ppp.grade.select.persistence.SelectVO;
 import com.ppp.grade.subject.persistence.SubjectDAO;
 import com.ppp.grade.subject.persistence.SubjectVO;
+import com.ppp.grade.user.controller.LoginController;
 
 public class SubjectController implements Controller {
 	ModelAndView mav = new ModelAndView();
-	int majorSum = 0;
-	int generalSum = 0;
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws UnsupportedEncodingException {
-
+		int majorSum = 0;
+		int generalSum = 0;
+		//부전공용 계산 변수
+		int minorSum = 0;
 		String str[] = request.getParameterValues("subject");
 		String num = request.getParameter("num");
 
@@ -49,30 +53,65 @@ public class SubjectController implements Controller {
 		String MajorNum = subjectList.get(0).get학과코드();
 
 		for (SubjectVO obj : subjectList) {
-			if (obj.get학과코드().equals("0")) {
+			if (obj.get학과코드().equals("99")) {
 				System.out.println("교양과목");
 				generalSum += Integer.parseInt(obj.get학점());
-			} else {
+			}
+			//전공학과코드가 아니면 부전공에 더해줍니다.
+			else if((obj.get학과코드()==MajorNum) && obj.get학과코드()!="99"){
 				majorSum += Integer.parseInt(obj.get학점());
 			}
+			else {
+				minorSum += Integer.parseInt(obj.get학점());
+			}
 		}
-		System.out.println(majorSum);
+		System.out.println("주전공 =" +majorSum);
+		System.out.println("부전공 = "+minorSum);
 
 		// 2. GRADUATION 정보가져오기(학과코드로)
-		GraduationDAO graduationDAO = new GraduationDAO();
-
-		GraduationVO graduation = new GraduationVO();
-		graduation = graduationDAO.getGraduationWithMajorNum(MajorNum);
-
-		System.out.println(graduation.get전공심화());
-		System.out.println(graduation.get일반교양());
-
-		// 3. 연산
-		mav.addObject("Majorresult", (Integer.parseInt(graduation.get전공심화()) - majorSum)+"");
-		mav.addObject("Generalresult", (Integer.parseInt(graduation.get일반교양()) - generalSum)+"");
-		mav.setViewName("result.jsp");
 		
+		String MinorNum = LoginController.getStu_복수전공();
+		System.out.println(MinorNum);
+		
+		//복수전공이 없으면 즉, 전공만 듣는 학생 계산
+		if(MinorNum==null){
+			GraduationDAO graduationDAO = new GraduationDAO();
 	
-		return mav;
+			GraduationVO graduation = new GraduationVO();
+			graduation = graduationDAO.getGraduationWithMajorNum(MajorNum);
+	
+			System.out.println(graduation.get전공심화());
+			System.out.println(graduation.get일반교양());
+	
+			// 3. 연산
+			mav.addObject("Majorresult", (Integer.parseInt(graduation.get전공심화()) - majorSum)+"");
+			mav.addObject("Generalresult", (Integer.parseInt(graduation.get일반교양()) - generalSum)+"");
+			mav.setViewName("result.jsp");
+			
+		
+			return mav;
+		}
+		else{
+			GraduationDAO graduationDAO = new GraduationDAO();
+			MinortableDAO minortableDAO = new MinortableDAO();
+			
+			GraduationVO graduation = new GraduationVO();
+			MinortableVO minortable = new MinortableVO();
+			graduation = graduationDAO.getGraduationWithMajorNum(MajorNum);
+			minortable = minortableDAO.getMinortableWithMinorNum(MinorNum);
+	
+			System.out.println("전공학점 = "+minortable.get전공학점());
+			System.out.println("복수전공학점 = "+minortable.get복수전공학점());
+			System.out.println("일반교양 = "+graduation.get일반교양());
+	
+			// 3. 연산
+			mav.addObject("Majorresult", (Integer.parseInt(minortable.get전공학점()) - majorSum)+"");
+			mav.addObject("Minorresult", (Integer.parseInt(minortable.get복수전공학점()) - minorSum)+"");
+			mav.addObject("Generalresult", (Integer.parseInt(graduation.get일반교양()) - generalSum)+"");
+			mav.setViewName("result.jsp");
+			
+		
+			return mav;
+		}
 	}
 }

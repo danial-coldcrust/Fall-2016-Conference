@@ -15,7 +15,7 @@ public class SelectDAO {
 	private Connection conn = null;
 	private PreparedStatement stmt = null;
 	private ResultSet rs = null;
-	private final String SELECT_PUT2 = "INSERT INTO 수강이력 VALUES(?, ?)";
+	private final String SELECT_PUT2 = "INSERT INTO 수강이력 VALUES(?, ?, NULL)";
 
 	public void insertSelect(SelectVO vo) {
 

@@ -18,24 +18,26 @@ public class SignupController implements Controller {
 		String PWD = request.getParameter("password");
 		String NAME = request.getParameter("name");
 		String MAJOR = request.getParameter("major");
+		String MINOR = request.getParameter("minor");
 		
 		UserVO vo = new UserVO();
 		vo.set학번(ID);
-		vo.set이름(NAME);
 		vo.set패스워드(PWD);
+		vo.set이름(NAME);
 		vo.set주전공(MAJOR);		//나중에 예외처리필요
+		vo.set복수전공(MINOR);
 		
 		UserDAO userDAO = new UserDAO();
 		UserVO user = userDAO.CheckID(vo);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("num",ID);
 		if(user != null){
 			mav.setViewName("signup.jsp");
 		}
 		else{
 			userDAO.insertUser(vo);
-			mav.setViewName("select.jsp");
+			
+			mav.setViewName("login.jsp");
 		}
 		return mav;
 	}

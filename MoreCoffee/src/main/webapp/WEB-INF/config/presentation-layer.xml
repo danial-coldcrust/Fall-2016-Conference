@@ -31,4 +31,5 @@
 	<bean class="com.ppp.grade.user.controller.UserController" id="admin" />
 	<bean class="com.ppp.grade.user_repair.controller.UserRepairController" id="user_repair"/>
 	<bean class="com.ppp.grade.user_repair.controller.UserRepairProcController" id="user_repair_proc"/>
+
 </beans>

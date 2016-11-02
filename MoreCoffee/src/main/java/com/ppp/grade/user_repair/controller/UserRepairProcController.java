@@ -1,3 +1,4 @@
+
 package com.ppp.grade.user_repair.controller;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +34,6 @@ public class UserRepairProcController implements Controller{
 		
 		userDAO.updateUser(userVO);
 		
-		System.out.println("as");
 		mav.setViewName("login.jsp");
 		return mav;
 	}

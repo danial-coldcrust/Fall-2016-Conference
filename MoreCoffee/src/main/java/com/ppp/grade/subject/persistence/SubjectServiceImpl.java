@@ -21,4 +21,8 @@ public class SubjectServiceImpl implements SubjectService {
    public  List<SubjectVO> getSubjectWithSubjectNum(String[] SubjectNum){
 	   return SubjectDAO.getSubjectWithSubjectNum(SubjectNum);
    }
+   
+   public  List<SubjectVO> getSubjectWithMinorNum(String MinorNum){
+	   return SubjectDAO.getSubjectWithMinorNum(MinorNum);
+   }
 }
