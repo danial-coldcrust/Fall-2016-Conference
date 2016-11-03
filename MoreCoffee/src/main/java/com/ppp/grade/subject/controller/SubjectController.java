@@ -36,7 +36,8 @@ public class SubjectController implements Controller {
 		int generalSum2 = 0;
 		//부전공용 계산 변수
 		int minorSum = 0;
-		String str[] = request.getParameterValues("subject");
+		
+		String str[] = request.getParameterValues("subject[]");
 		String num = request.getParameter("num");
 
 		SelectVO vo = new SelectVO();
