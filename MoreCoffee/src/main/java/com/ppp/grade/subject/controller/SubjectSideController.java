@@ -73,7 +73,7 @@ public class SubjectSideController implements Controller {
 				else if((obj.get구분().equals("전공")) && (obj.get학과코드() != MajorNum)){
 					minorSum += Integer.parseInt(obj.get학점());
 				}
-				else if((obj.get구분().equals("학과기초"))&&(obj.get학과코드()==MajorNum)){
+				else{
 					majorbaseSum +=Integer.parseInt(obj.get학점());
 				}
 			}
@@ -100,6 +100,11 @@ public class SubjectSideController implements Controller {
 				mav.addObject("Generalresult1", (Integer.parseInt(graduation.get일반교양()) - generalSum1)+"");
 				mav.addObject("Generalresult2", (Integer.parseInt(graduation.get필수교양()) - generalSum2)+"");
 				mav.addObject("Majorbaseresult", (Integer.parseInt(graduation.get학과기초()) - majorbaseSum)+"");
+				mav.addObject("MatchingSelectList",subjectList);
+				mav.addObject("MajorSum", majorSum+"");
+				mav.addObject("GeneralSum1", generalSum1+"");
+				mav.addObject("GeneralSum2", generalSum2+"");
+				mav.addObject("MajorbaseSum", majorbaseSum+"");
 				mav.setViewName("result.jsp");
 				
 			
@@ -124,6 +129,13 @@ public class SubjectSideController implements Controller {
 				mav.addObject("Minorresult", (Integer.parseInt(minortable.get복수전공학점()) - minorSum)+"");
 				mav.addObject("Generalresult1", (Integer.parseInt(graduation.get일반교양()) - generalSum1)+"");
 				mav.addObject("Generalresult2", (Integer.parseInt(graduation.get필수교양()) - generalSum2)+"");
+				mav.addObject("MatchingSelectList", subjectList);
+				//현재까지 들은 학점을 보여주기위한 값들........
+				mav.addObject("MajorSum", majorSum+"");
+				mav.addObject("MinorSum",  minorSum+"");
+				mav.addObject("GeneralSum1", generalSum1+"");
+				mav.addObject("GeneralSum2", generalSum2+"");
+				mav.addObject("MajorbaseSum", majorbaseSum+"");
 				mav.setViewName("result.jsp");
 				
 			
