@@ -1,5 +1,7 @@
 package com.ppp.grade.select.persistence;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,16 @@ public class SelectServiceImpl implements SelectService {
 
 	public void insertUser(SelectVO vo){
 		
-		//여기에 학과코드랑 학번을 넘겨야 하는군;
-		selectDAO.insertSelect(vo);
+		selectDAO.insertSelect(vo);	
 	}
+	
+	public List<SelectVO> getSubjectList(String studentNum){
+		
+		return selectDAO.getSubjectList(studentNum);
+	}
+	
+
+	
+	
+	
 }

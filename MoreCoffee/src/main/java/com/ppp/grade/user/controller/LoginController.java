@@ -82,25 +82,25 @@ public class LoginController implements Controller {
 			subjectList = subjectDAO.getSubjectWithMajorNum(user.get주전공());
 			mav.addObject("subjectList", subjectList);
 			
-			//부전공
+			//교양
+			List<SubjectVO> subjectList2 = new ArrayList<SubjectVO>();
+			subjectList2 = subjectDAO.getSubjectWithMajorNum("99");
+			mav.addObject("subjectList2", subjectList2);
+			
+			//복수전공
 			if(user.get복수전공() != null){
 				List<SubjectVO> subjectList3 = new ArrayList<SubjectVO>();
 				subjectList3 = subjectDAO.getSubjectWithMinorNum(user.get복수전공());
 				mav.addObject("subjectList3", subjectList3);
 			}
 			
-			//교양
-			List<SubjectVO> subjectList2 = new ArrayList<SubjectVO>();
-			subjectList2 = subjectDAO.getSubjectWithMajorNum("99");
-			mav.addObject("subjectList2", subjectList2);
-			
 			//학번
 			mav.addObject("num",num);
 			
 			//회원일 때 수강이력테이블에서 학번들 가져옴(비교하기위해)
 			LoginController loginController = new LoginController();
-			SelectDAO selectDAO = new SelectDAO(); 
-			List<SelectVO> selectList = selectDAO.getStudentNum(num);
+			SelectDAO selectDAO = new SelectDAO();  //사실 DAO를 new 하는 것은 옳은 방식은 아님(이제부터라도)
+			List<SelectVO> selectList = selectDAO.getSubjectList(num);
 			
 			
 			// 관리자

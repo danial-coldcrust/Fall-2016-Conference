@@ -44,7 +44,7 @@ public class SubjectSideController implements Controller {
 			List<SubjectVO> subjectList = new ArrayList<SubjectVO>();
 			
 			String studentNum = LoginController.getStu_아이디();
-			MatchingSelectList = selectDAO.getStudentNum(studentNum);
+			MatchingSelectList = selectDAO.getSubjectList(studentNum);
 			String[] str = new String[MatchingSelectList.size()];
 			int i =0;
 			//리스트 to 배열

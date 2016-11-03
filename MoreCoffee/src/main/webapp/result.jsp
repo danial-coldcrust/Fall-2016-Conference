@@ -25,5 +25,8 @@
 %>
 </br>일반교양남은 학점 = <%=Generalresult1 %>
 </br>필수교양남은 학점 = <%=Generalresult2 %>
+<form action="RsltToSltController.do">
+    <input type="submit" value="수강이력수정">
+</form>
 </body>
 </html>

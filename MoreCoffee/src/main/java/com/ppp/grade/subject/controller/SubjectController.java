@@ -81,7 +81,6 @@ public class SubjectController implements Controller {
 		System.out.println("부전공 = "+minorSum);
 
 		// 2. GRADUATION 정보가져오기(학과코드로)
-		
 		String MinorNum = LoginController.getStu_복수전공();
 		System.out.println(MinorNum);
 		

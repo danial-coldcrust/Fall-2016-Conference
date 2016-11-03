@@ -63,7 +63,7 @@ public class SelectDAO {
 	}
 	
 	// 학번으로 수강이력테이블에서 내가 선택한 과목코드를 리스트르 반환
-		public List<SelectVO> getStudentNum(String studentNum) {
+		public List<SelectVO> getSubjectList(String studentNum) {
 			SelectVO select = null;
 			List<SelectVO> selectList = new ArrayList<SelectVO>();
 			try {
