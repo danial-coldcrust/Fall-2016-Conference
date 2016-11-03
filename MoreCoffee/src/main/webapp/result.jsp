@@ -62,6 +62,15 @@ function print(printArea)
 		win.print();
 		win.close();
 }
+function logout(){
+<%
+	LoginController.setStu_아이디(null);
+	LoginController.setStu_이름(null);
+	LoginController.setStu_패스워드(null);
+	LoginController.setStu_전공(null);
+	LoginController.setStu_복수전공(null);
+%>
+}
 </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -120,7 +129,7 @@ function print(printArea)
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"OnClick="print(document.getElementById('printArea').innerHTML)"><span class="glyphicon glyphicon-print"></span>&nbsp;Print</a></li>
                         <li><a href="#"><span class="glyphicon glyphicon-hourglass"></span>&nbsp;Modified</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>&nbsp;LogOut</a></li>
+                        <li><a href="login.jsp" OnClick="logout()"><span class="glyphicon glyphicon-log-out"></span>&nbsp;LogOut</a></li>
                     </ul>
                     <!--navbar-right close-->
                 </div>

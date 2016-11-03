@@ -43,7 +43,27 @@ public class LoginController implements Controller {
 		return stu_전공;
 	}
 
-	 public Boolean StringEqualList(String studentNum, List<SelectVO> selectList) {
+	public static void setStu_이름(String stu_이름) {
+		LoginController.stu_이름 = stu_이름;
+	}
+
+	public static void setStu_패스워드(String stu_패스워드) {
+		LoginController.stu_패스워드 = stu_패스워드;
+	}
+
+	public static void setStu_아이디(String stu_아이디) {
+		LoginController.stu_아이디 = stu_아이디;
+	}
+
+	public static void setStu_전공(String stu_전공) {
+		LoginController.stu_전공 = stu_전공;
+	}
+
+	public static void setStu_복수전공(String stu_복수전공) {
+		LoginController.stu_복수전공 = stu_복수전공;
+	}
+
+	public Boolean StringEqualList(String studentNum, List<SelectVO> selectList) {
 	      for (SelectVO object : selectList) {
 	         if (object == selectList.get(0)) {
 	        	 System.out.println(object);
