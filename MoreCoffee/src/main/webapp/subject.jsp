@@ -8,16 +8,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript">
-
-function myfunction()
-{
-    var first = document.getElementById("textbox1").value
-
-    
-  alert(first);
-}
-</script>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>과목 목록</title>
 </head>
@@ -39,7 +29,7 @@ function myfunction()
 	<center>
 		<form class="login-form" action="subjectread.do" method="post">
 			<input type="text" name="r과목코드" id = "textbox1"/>
-			<input id="loginbutton"	type="submit" onclick="myfunction()" value="검색" />
+			<input id="loginbutton"	type="submit"value="검색" />
 		</form>
 	</center>
 	<h1>수정</h1>
@@ -74,7 +64,6 @@ function myfunction()
 			<th bgcolor="4D95C9" width="200">학기</th>
 			<th bgcolor="4D95C9" width="200">학과코드</th>
 		</tr>
-		<% request.setCharacterEncoding("UTF-8"); %>
 		<% for(SubjectVO obj : subjectList) { %>
 		<tr>
 			<td align="center"><%= obj.get과목코드() %></td>

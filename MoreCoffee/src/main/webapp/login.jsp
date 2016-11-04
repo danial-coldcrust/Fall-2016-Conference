@@ -65,11 +65,20 @@
 				<div class="modal fade" id="popUpWindow" tabindex="-1">
 					<div class="modal-dialog">
 						<div class="modal-content">
+						    <form class="login-form" action="signup.do" method="post">
 							<div class="modal-body">
 								<div class="form-group">
 									<strong>회원 가입</strong>
 									<div style="text-align: left">
-										학과 <select class="form-control" name = "major">
+										주전공 <select class="form-control" name = "major">
+											<option>학과 선택</option>
+											<option>컴퓨터공학과</option>
+											<option>특수교육과</option>
+											<option>수학과</option>
+											<option>영화애니메이션학과</option>
+											<option>컴퓨터소프웨어공학과</option>
+											<option>연극무용학과</option></select>
+										부전공 <select class="form-control" name = "minor">
 											<option>학과 선택</option>
 											<option>컴퓨터공학과</option>
 											<option>특수교육과</option>
@@ -88,6 +97,7 @@
 									<button class="btn btn-primary btn-block">가입</button>
 								</center>
 							</div>
+							</form>
 						</div>
 					</div>
 				</div>

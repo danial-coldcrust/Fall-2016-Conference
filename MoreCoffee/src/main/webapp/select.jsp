@@ -87,7 +87,7 @@
 								<li><a href="#">봉사시간</a></li>
 								<li><a href="#">교육</a></li>
 							</ul> <!--dropdown-menu close--></li>
-						<li><a href="user_repair.do" method="post" target="_blank"><span
+						<li><a href="user_repair.do" method="post" target="_self"><span
 								class="glyphicon glyphicon-user" name="repair_sumbit"></span>&nbsp;회원정보수정</a></li>
 
 						<li><a href="https://portal.sch.ac.kr/" target="_blank"><span

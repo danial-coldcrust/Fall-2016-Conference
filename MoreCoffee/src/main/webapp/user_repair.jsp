@@ -98,7 +98,7 @@
                         </div>
                         <hr />
                         <div class="form-group ">
-                            <button type="button" class="btn btn-primary btn-lg btn-block login-button">수정</button>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block login-button">수정</button>
                         </div>
                     </form>
                 </div>

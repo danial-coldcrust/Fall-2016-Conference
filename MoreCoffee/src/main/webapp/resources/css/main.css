@@ -31,13 +31,15 @@
 	padding: 70px;
 }
 
+legend{
+	text-align: center;	
+}
+
 @media ( max-width :767px) {
 	#wrapper {
 		padding-left: 0;
 	}
-	#sidebar-wrapper {
-		left: 0;
-	}
+	
 	#wrapper.active {
 		position: relative;
 		left: 250px;

@@ -17,7 +17,7 @@ public class UserRepairProcController implements Controller{
 		ModelAndView mav = new ModelAndView();
 		String 학번 = request.getParameter("학번");
 		String 이름 = request.getParameter("이름");
-		String 패스워드 = request.getParameter("비밀번호");
+		String 패스워드 = request.getParameter("패스워드");
 		String 주전공 = request.getParameter("주전공");
 		String 복수전공 = request.getParameter("복수전공");
 		if(복수전공.equals("null")){

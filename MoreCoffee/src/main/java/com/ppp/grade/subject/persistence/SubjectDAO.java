@@ -142,7 +142,7 @@ public void insertSubject(SubjectVO vo) {
 			System.out.println("===> JDBC getSubject()");
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(SUBJECT_GET);
-			stmt.setString(1, vo.get학과코드());
+			stmt.setString(1, vo.get과목코드());
 			rs = stmt.executeQuery();
 			if (rs.next()) {
 				subject = new SubjectVO();
