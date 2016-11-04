@@ -2,6 +2,8 @@
 <%@ page import="com.ppp.grade.subject.persistence.SubjectDAO"%>
 <%@ page import="com.ppp.grade.subject.persistence.SubjectVO"%>
 <%@ page import="com.ppp.grade.select.persistence.SelectVO"%>
+<%@ page import= "com.ppp.grade.history.persistence.HistoryDAO"%>
+<%@ page import= "com.ppp.grade.history.persistence.HistoryVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -256,8 +258,15 @@
 															}
 														%>
 										</select>
+										<%
+										//여기서 history 비워주자
+										HistoryDAO historyDAO = new HistoryDAO();
+										HistoryVO historyVO = new HistoryVO();
+										historyDAO.deleteHistory(studentNum);
+										%>
 									</div>
-								</div></div>
+								</div>
+								</div>
 					</div>
 					<center>
 						<button class="btn btn-danger btn-block" type="submit"

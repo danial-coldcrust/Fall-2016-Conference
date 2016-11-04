@@ -29,4 +29,18 @@ public class HistoryDAO {
 		}
 	}
 
+	public void deleteHistory(String StudentNum) {
+		System.out.println("===> JEBC deleteHistory()");
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(HISTORY_DELETE);
+			stmt.setString(1, StudentNum);
+			stmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
+	}
+
 }
