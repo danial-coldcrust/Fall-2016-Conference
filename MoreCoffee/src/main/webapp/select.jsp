@@ -1,14 +1,18 @@
 <%@ page import="java.util.List"%>
 <%@ page import="com.ppp.grade.subject.persistence.SubjectDAO"%>
 <%@ page import="com.ppp.grade.subject.persistence.SubjectVO"%>
+<%@ page import="com.ppp.grade.select.persistence.SelectVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	List<SubjectVO> MysubjectList = (List) request.getAttribute("mysubjectList"); //수강이력
+	List<SelectVO> MysubjectList = (List) request.getAttribute("mysubjectList"); //수강이력
 	List<SubjectVO> subjectList = (List) request.getAttribute("subjectList"); //전공
 	List<SubjectVO> subjectList2 = (List) request.getAttribute("subjectList2");//교양
 	List<SubjectVO> subjectList3 = (List) request.getAttribute("subjectList3");//필수교양
 	String studentNum = (String) request.getAttribute("num");
+	
+	SubjectDAO subjectDAO = new SubjectDAO();
+	SubjectVO subjectVO = new SubjectVO();
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
@@ -125,67 +129,111 @@
 								<input type="hidden" name="num" value=<%=studentNum%>>
 								<div class='row'>
 									<div class='span12'>
-										<select multiple class="searchable" name="subject[]"">
-											<%if (MysubjectList == null) { //초기회원 로그인 -> 선택창으로 이동
-												
-											
+										<select multiple class="searchable" name="subject[]">
+											<%
 												for (SubjectVO obj : subjectList) {
 													if (obj.get구분().equals("학과기초")) {
 											%>
 											<option value=<%=obj.get과목코드()%>><%=obj.get과목명()%>[<%=obj.get학점()%>]&nbsp;&nbsp;<%=obj.get학년()%>학년
 											</option>
 											<%
-													}
-											}
-											}else{ //기존회원 로그인 -> 선택창에서 학과기초 출력 , 내가 선택한 과목 출력
-												
-												//근데 기본적인 학과기초 출력도 안되는것 같던데
-												for (SubjectVO obj : subjectList) {
-													if (obj.get구분().equals("학과기초")) {
+												}
+												}
 											%>
-											<option value=<%=obj.get과목코드()%>><%=obj.get과목명()%>[<%=obj.get학점()%>]&nbsp;&nbsp;<%=obj.get학년()%>학년
-											</option>
-											<%
-													}
-												}	
-											}
-										%>
 										</select>
 									</div>
 								</div>
-								<!--전공 -->
+								<!--전공 : 신규회원-->
 								<class="col-md-12well"> <legend id="anch2">전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</legend>
 								<div class='row'>
 									<div class='span12'>
-										<select multiple class="searchable" name="subject[]"">
+									<%
+												if (MysubjectList == null) { %>
+										<select multiple class="searchable" name="subject[]">
+											<!--전공 -- : 초기회원>-->
 											<%
-												for (SubjectVO obj : subjectList) {
-													if (obj.get구분().equals("전공")) {
+													for (SubjectVO obj : subjectList) {
+														if (obj.get구분().equals("전공")) {
 											%>
 											<option value=<%=obj.get과목코드()%>><%=obj.get과목명()%>[<%=obj.get학점()%>]&nbsp;&nbsp;<%=obj.get학년()%>학년
 											</option>
 											<%
+												}
 													}
-											}
-										%>
+											%>
 										</select>
+										<%	} else//if문	
+			// <!--전공 -- : 기존회원-내가 선택한거 빼고 출력> -->
+			 {
+				int MajorSubjectCnt = 0;
+				for (SubjectVO obj : subjectList) {
+					if (obj.get구분().equals("전공")) {
+						MajorSubjectCnt++;
+					}
+
+				}
+
+				for (int i = 0; i < MajorSubjectCnt - 1; i++) {
+					for (int j = 0; j < MysubjectList.size(); j++) {
+						if (subjectList.get(i).get구분().equals("전공")) {
+							if (MysubjectList.get(j).get과목코드().equals(subjectList.get(i).get과목코드())) {
+								subjectList.remove(subjectList.get(i));
+								MajorSubjectCnt--;
+							} else {
+								continue;
+							}
+						}
+					}
+				}
+				%>
+
+										<select multiple class="searchable" name="subject[]"">
+											<%
+												for (SubjectVO obj : subjectList) {
+														if (obj.get구분().equals("전공")) {
+											%>
+
+											<option value=<%=obj.get과목코드()%>><%=obj.get과목명()%>[<%=obj.get학점()%>]&nbsp;&nbsp;<%=obj.get학년()%>학년
+											</option>
+
+											<%
+												}
+													}
+											%>
+										
+								
+
+								<!--전공 -- : 기존회원-내가 선택한거출력> --> <%
+									 	for (SelectVO obj : MysubjectList) {
+									 			subjectVO = subjectDAO.getSubject(obj.get과목코드());
+									 			if (subjectVO.get구분().equals("전공")) {
+									 %>
+
+								<option selected value=<%=obj.get과목코드()%>><%=subjectVO.get과목명()%>[<%=subjectVO.get학점()%>]&nbsp;&nbsp;<%=subjectVO.get학년()%>학년
+								</option>
+
+								<%
+									}
+										}
+								%> </select> 
 									</div>
-								</div>
-								<!--교양 --> <class="col-md-12well"> <legend id="anch3">교&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;양</legend>
+								</div><%
+				} //else
+			%> <!--교양 --> <class="col-md-12well"> <legend id="anch3">교&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;양</legend>
 								<div class='row'>
 									<div class='span12'>
 										<select multiple class="searchable" name="subject[]"">
 											<%
-										for (SubjectVO obj : subjectList2) {
-									%>
+															for (SubjectVO obj : subjectList2) {
+														%>
 											<option value=<%=obj.get과목코드()%>><%=obj.get과목명()%>[<%=obj.get학점()%>]&nbsp;&nbsp;<%=obj.get학년()%>학년
 											</option>
 											<%
-													}
-											if (MysubjectList != null) {
-												System.out.println("체크알고리즘");
-											}
-										%>
+															}
+															if (MysubjectList != null) {
+																System.out.println("체크알고리즘");
+															}
+														%>
 										</select>
 									</div>
 								</div>
@@ -195,22 +243,21 @@
 									<div class='span12'>
 										<select multiple class="searchable" name="subject[]"">
 											<%
-										if (subjectList3 != null) {
-											for (SubjectVO obj : subjectList3) {
-										%>
+															if (subjectList3 != null) {
+																for (SubjectVO obj : subjectList3) {
+														%>
 											<option value=<%=obj.get과목코드()%>><%=obj.get과목명()%>[<%=obj.get학점()%>]&nbsp;&nbsp;<%=obj.get학년()%>학년
 											</option>
 											<%
-													}
-											if (MysubjectList != null) {
-												System.out.println("체크알고리즘");
-											}
-										}
-										%>
+															}
+																if (MysubjectList != null) {
+																	System.out.println("체크알고리즘");
+																}
+															}
+														%>
 										</select>
 									</div>
-								</div>
-						</div>
+								</div></div>
 					</div>
 					<center>
 						<button class="btn btn-danger btn-block" type="submit"

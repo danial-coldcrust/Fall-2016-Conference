@@ -42,6 +42,7 @@ public class SignupController implements Controller {
 			mav.setViewName("signup.jsp");
 		}
 		else{
+			// 승탁이가 추가(주석좀달아줘용)
 			List<DepartmentVO> departmentList = new ArrayList<DepartmentVO>();
 			DepartmentVO d_vo = new DepartmentVO();
 			DepartmentDAO d_dao = new DepartmentDAO();

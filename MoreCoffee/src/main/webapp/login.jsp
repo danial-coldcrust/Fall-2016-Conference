@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="ko">
-<head>
+<head>	
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,10 +10,10 @@
 <meta name="author" content="">
 <link rel="icon" href="../../favicon.ico">
 
-<title>มนพ๗ป็มค FOR SCH STUDENT</title>
+<title> มนพ๗ป็มค FOR SCH STUDENT </title>
 
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
+<link rel="stylesheet"	
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">

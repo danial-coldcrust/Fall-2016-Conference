@@ -161,6 +161,33 @@ public void insertSubject(SubjectVO vo) {
 		}
 		return subject;
 	}
+	
+	//string으로 조회 추가 과목번호로 과목정보 다 가져옴
+	public SubjectVO getSubject(String subjectNum) {
+		SubjectVO subject = null;
+		try {
+			System.out.println("===> JDBC getSubject()");
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(SUBJECT_GET);
+			stmt.setString(1, subjectNum);
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				subject = new SubjectVO();
+				subject.set과목코드(rs.getString("과목코드"));
+				subject.set과목명(rs.getString("과목명"));
+				subject.set구분(rs.getString("구분"));
+				subject.set학점(rs.getString("학점"));
+				subject.set학년(rs.getString("학년"));
+				subject.set학기(rs.getString("학기"));
+				subject.set학과코드(rs.getString("학과코드"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(rs, stmt, conn);
+		}
+		return subject;
+	}
 
 	public void updateSubject(SubjectVO vo) {
 		System.out.println("===> JEBC updateSubject()");
