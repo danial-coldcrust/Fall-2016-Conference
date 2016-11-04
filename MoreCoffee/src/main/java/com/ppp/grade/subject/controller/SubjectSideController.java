@@ -73,7 +73,7 @@ public class SubjectSideController implements Controller {
 				else if((obj.get구분().equals("전공")) && (obj.get학과코드() != MajorNum)){
 					minorSum += Integer.parseInt(obj.get학점());
 				}
-				else{
+				else{// 학과기초
 					majorbaseSum +=Integer.parseInt(obj.get학점());
 				}
 			}

@@ -83,9 +83,9 @@
 								<li><a href="#">봉사시간</a></li>
 								<li><a href="#">교육</a></li>
 							</ul> <!--dropdown-menu close--></li>
-							  <li><a href="user_repair.do" method="post" target="_blank"><span
-                        class="glyphicon glyphicon-user" name="repair_sumbit"></span>&nbsp;회원정보수정</a></li>
-							
+						<li><a href="user_repair.do" method="post" target="_blank"><span
+								class="glyphicon glyphicon-user" name="repair_sumbit"></span>&nbsp;회원정보수정</a></li>
+
 						<li><a href="https://portal.sch.ac.kr/" target="_blank"><span
 								class="glyphicon glyphicon-home"></span>&nbsp;포탈</a></li>
 						<li><a href="#"><span
@@ -126,7 +126,9 @@
 								<div class='row'>
 									<div class='span12'>
 										<select multiple class="searchable" name="subject[]"">
-											<%
+											<%if (MysubjectList == null) { //초기회원 로그인 -> 선택창으로 이동
+												
+											
 												for (SubjectVO obj : subjectList) {
 													if (obj.get구분().equals("학과기초")) {
 											%>
@@ -134,6 +136,18 @@
 											</option>
 											<%
 													}
+											}
+											}else{ //기존회원 로그인 -> 선택창에서 학과기초 출력 , 내가 선택한 과목 출력
+												
+												//근데 기본적인 학과기초 출력도 안되는것 같던데
+												for (SubjectVO obj : subjectList) {
+													if (obj.get구분().equals("학과기초")) {
+											%>
+											<option value=<%=obj.get과목코드()%>><%=obj.get과목명()%>[<%=obj.get학점()%>]&nbsp;&nbsp;<%=obj.get학년()%>학년
+											</option>
+											<%
+													}
+												}	
 											}
 										%>
 										</select>

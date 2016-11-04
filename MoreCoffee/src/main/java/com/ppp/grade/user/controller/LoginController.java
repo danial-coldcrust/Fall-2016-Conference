@@ -22,7 +22,16 @@ public class LoginController implements Controller {
 	static String stu_아이디;
 	static String stu_전공;
 	static String stu_복수전공;
+	static int allpoint;
 	
+	public static int getAllpoint() {
+		return allpoint;
+	}
+
+	public static void setAllpoint(int allpoint) {
+		LoginController.allpoint = allpoint;
+	}
+
 	public static String getStu_복수전공() {
 		return stu_복수전공;
 	}
@@ -90,11 +99,19 @@ public class LoginController implements Controller {
 		
 		if(user != null){
 			//값 저장 해보는 부분
+			stu_이름 = null;
+			stu_패스워드 = null;
+			stu_아이디 = null;
+			stu_전공 = null;
+			stu_복수전공 = null;
+			
 			stu_이름 = user.get이름();
 			stu_패스워드 = user.get패스워드();
 			stu_아이디 = user.get학번();
 			stu_전공 = user.get주전공();
 			stu_복수전공 = user.get복수전공();
+			
+			allpoint = 140;
 			
 			SubjectDAO subjectDAO = new SubjectDAO();
 			//전공

@@ -1,5 +1,8 @@
 package com.ppp.grade.user.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,6 +11,10 @@ import org.springframework.web.servlet.mvc.Controller;
 
 import com.ppp.grade.user.persistence.UserDAO;
 import com.ppp.grade.user.persistence.UserVO;
+
+import com.ppp.grade.department.persistence.DepartmentDAO;
+import com.ppp.grade.department.persistence.DepartmentVO;
+import com.ppp.grade.subject.persistence.SubjectVO;
 
 public class SignupController implements Controller {
 	
@@ -35,8 +42,20 @@ public class SignupController implements Controller {
 			mav.setViewName("signup.jsp");
 		}
 		else{
+			List<DepartmentVO> departmentList = new ArrayList<DepartmentVO>();
+			DepartmentVO d_vo = new DepartmentVO();
+			DepartmentDAO d_dao = new DepartmentDAO();
+			departmentList = d_dao.getDepartmentList(d_vo);
+			//departmentList.get(0).get학과코드();
+			for(int i=0; i<departmentList.size(); i++){
+				if(departmentList.get(i).get학과명().equals(MAJOR)){
+					vo.set주전공(departmentList.get(i).get학과코드());
+				}
+				else if(departmentList.get(i).get학과명().equals(MINOR)){
+					vo.set복수전공(departmentList.get(i).get학과코드());
+				}
+			}
 			userDAO.insertUser(vo);
-			
 			mav.setViewName("login.jsp");
 		}
 		return mav;
