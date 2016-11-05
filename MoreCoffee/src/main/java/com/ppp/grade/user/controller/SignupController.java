@@ -25,6 +25,11 @@ public class SignupController implements Controller {
 		String NAME = request.getParameter("name");
 		String MAJOR = request.getParameter("major");
 		String MINOR = request.getParameter("minor");
+		System.out.println(ID);
+		System.out.println(PWD);
+		System.out.println(NAME);
+		System.out.println(MAJOR);
+		System.out.println(MINOR);
 		
 		UserVO vo = new UserVO();
 		vo.set학번(ID);
@@ -41,7 +46,6 @@ public class SignupController implements Controller {
 			mav.setViewName("signup.jsp");
 		}
 		else{
-			// 승탁이가 추가(주석좀달아줘용)
 			List<DepartmentVO> departmentList = new ArrayList<DepartmentVO>();
 			DepartmentVO d_vo = new DepartmentVO();
 			DepartmentDAO d_dao = new DepartmentDAO();
@@ -54,6 +58,12 @@ public class SignupController implements Controller {
 				else if(departmentList.get(i).get학과명().equals(MINOR)){
 					vo.set복수전공(departmentList.get(i).get학과코드());
 				}
+				else if(MINOR.equals("학과 선택")){
+					vo.set복수전공(null);
+				}
+				else if(MAJOR.equals("학과 선택")){	// 허상이긴한데 딱히 예외처리방법이생각안남
+					vo.set주전공(null);
+				}	
 			}
 			userDAO.insertUser(vo);
 			mav.setViewName("login.jsp");

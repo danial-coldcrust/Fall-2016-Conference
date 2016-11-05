@@ -149,179 +149,177 @@ com.ppp.grade.minortable.persistence.MinortableVO"%>
 					</ul>
 					<!--navbar-right close-->
 				</div>
-		<!--collapse navbar-collapse drop_menu close-->
+				<!--collapse navbar-collapse drop_menu close-->
 			</nav>
 		</div>
 		<!--container-fluid close-->
 
 	</div>
-			<fieldset>	
 
-		<div id="page-content-wrapper">
+	<div id="page-content-wrapper">
 
-			<div id="printArea">
-				<div class="container">
-					<div class="page-header">
-						<div class="col-md-12 well">
-							<h2>12학번 당신의 졸업요건</h2>
-							<div class="table-responsive">
-								<table class="table">
-									<tr>
-										<th class="border-top border-bottom border-left border-right"></th>
-										<th class="border-top border-bottom border-right">학초</th>
-										<th class="border-top border-bottom border-right">전공</th>
-										<!-- 나중에 복수전공이 있으면 띄워주는걸로 바꾸기 -->
-										<th class="border-top border-bottom border-right">복수전공</th>
-										<!-- ################################### -->
-										<th class="border-top border-bottom border-right">필수교양</th>
-										<th class="border-top border-bottom border-right">교양</th>
-										<th class="border-top border-bottom border-right">봉사교육</th>
-										<th class="border-top border-bottom border-right">심폐소생</th>
-										<th class="border-top border-bottom border-right">봉사활동</th>
-									</tr>
-									<!-- 주전공만들을때 실핼문 -->
-									<%
-										if (MinorNum == null) {
-									%>
-									<tr>
-										<td class="border-bottom border-left border-right">졸업조건</td>
-										<td class="border-bottom border-right"><%=graduation.get학과기초()%></td>
-										<td class="border-bottom border-right"><%=graduation.get전공심화()%></td>
-										<td class="border-bottom border-right"></td>
-										<td class="border-bottom border-right"><%=graduation.get필수교양()%></td>
-										<td class="border-bottom border-right"><%=graduation.get일반교양()%></td>
-										<td class="border-bottom border-right"><%=graduation.get봉사교육()%></td>
-										<td class="border-bottom border-right"><%=graduation.get심폐교육()%></td>
-										<td class="border-bottom border-right"><%=graduation.get봉사시간()%></td>
-									</tr>
-									<!-- 복수전공일때 실행문 -->
-									<%
-										} else {
-									%><tr>
-										<td class="border-bottom border-left border-right">졸업조건</td>
-										<td class="border-bottom border-right"><%=graduation.get학과기초()%></td>
-										<td class="border-bottom border-right"><%=minortable.get전공학점()%></td>
-										<td class="border-bottom border-right"><%=minortable.get복수전공학점()%></td>
-										<td class="border-bottom border-right"><%=graduation.get필수교양()%></td>
-										<td class="border-bottom border-right"><%=graduation.get일반교양()%></td>
-										<td class="border-bottom border-right"><%=graduation.get봉사교육()%></td>
-										<td class="border-bottom border-right"><%=graduation.get심폐교육()%></td>
-										<td class="border-bottom border-right"><%=graduation.get봉사시간()%></td>
-									</tr>
-									<%
-										}
-									%>
-									<tr>
-										<td class="border-bottom border-left border-right">나의현황?</td>
-										<td class="border-bottom border-right"><%=MajorbaseSum%></td>
-										<td class="border-bottom border-right"><%=MajorSum%></td>
-										<td class="border-bottom border-right"><%=MinorSum%></td>
-										<td class="border-bottom border-right"><%=GeneralSum2%></td>
-										<td class="border-bottom border-right"><%=GeneralSum1%></td>
-										<td class="border-bottom border-right">Pass</td>
-										<td class="border-bottom border-right">Fail</td>
-										<td class="border-bottom border-right">30</td>
-									</tr>
-									<tr>
-										<td class="border-bottom border-left border-right">남은학점!</td>
-										<td class="border-bottom border-right"><%=Majorbaseresult%></td>
-										<td class="border-bottom border-right"><%=Majorresult%></td>
-										<td class="border-bottom border-right"><%=Minorresult%></td>
-										<td class="border-bottom border-right"><%=Generalresult2%></td>
-										<td class="border-bottom border-right"><%=Generalresult1%></td>
-										<td class="border-bottom border-right">ㅋ</td>
-										<td class="border-bottom border-right">ㅋ</td>
-										<td class="border-bottom border-right">ㅋ</td>
-									</tr>
-								</table>
-							</div>
-							<h3>결과</h3>
-						</div>
-						<div class="col-md-12 well">
-							<legend id="anch1">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;초</legend>
-							<%
-								for (SubjectVO obj : MatchingSelectList) {
-									if (obj.get구분().equals("학과기초")) {
-							%>
-							<p><%=obj.get과목명()%></p>
-							<%
-								}
-								}
-							%>
-						</div>
-						<div class="col-md-12 well">
-							<legend id="anch2">전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</legend>
-							<%
-								for (SubjectVO obj : MatchingSelectList) {
-									if (obj.get구분().equals("전공") && obj.get학과코드().equals(MajorNum)) {
-							%>
-							<p><%=obj.get과목명()%></p>
-							<%
-								}
-								}
-							%>
-						</div>
-						<%
-							if (MinorNum != null) {
-						%>
-						<div class="col-md-12 well">
-							<legend id="anch4">부전공</legend>
-							<%
-								for (SubjectVO obj : MatchingSelectList) {
-										if (obj.get구분().equals("전공") && obj.get학과코드().equals(MinorNum)) {
-							%>
-							<p><%=obj.get과목명()%></p>
-							<%
-								}
+		<div id="printArea">
+			<div class="container">
+				<div class="page-header">
+					<div class="col-md-12 well">
+						<h2>12학번 당신의 졸업요건</h2>
+						<div class="table-responsive">
+							<table class="table">
+								<tr>
+									<th class="border-top border-bottom border-left border-right"></th>
+									<th class="border-top border-bottom border-right">학초</th>
+									<th class="border-top border-bottom border-right">전공</th>
+									<!-- 나중에 복수전공이 있으면 띄워주는걸로 바꾸기 -->
+									<th class="border-top border-bottom border-right">복수전공</th>
+									<!-- ################################### -->
+									<th class="border-top border-bottom border-right">필수교양</th>
+									<th class="border-top border-bottom border-right">교양</th>
+									<th class="border-top border-bottom border-right">봉사교육</th>
+									<th class="border-top border-bottom border-right">심폐소생</th>
+									<th class="border-top border-bottom border-right">봉사활동</th>
+								</tr>
+								<!-- 주전공만들을때 실핼문 -->
+								<%
+									if (MinorNum == null) {
+								%>
+								<tr>
+									<td class="border-bottom border-left border-right">졸업조건</td>
+									<td class="border-bottom border-right"><%=graduation.get학과기초()%></td>
+									<td class="border-bottom border-right"><%=graduation.get전공심화()%></td>
+									<td class="border-bottom border-right"></td>
+									<td class="border-bottom border-right"><%=graduation.get필수교양()%></td>
+									<td class="border-bottom border-right"><%=graduation.get일반교양()%></td>
+									<td class="border-bottom border-right"><%=graduation.get봉사교육()%></td>
+									<td class="border-bottom border-right"><%=graduation.get심폐교육()%></td>
+									<td class="border-bottom border-right"><%=graduation.get봉사시간()%></td>
+								</tr>
+								<!-- 복수전공일때 실행문 -->
+								<%
+									} else {
+								%><tr>
+									<td class="border-bottom border-left border-right">졸업조건</td>
+									<td class="border-bottom border-right"><%=graduation.get학과기초()%></td>
+									<td class="border-bottom border-right"><%=minortable.get전공학점()%></td>
+									<td class="border-bottom border-right"><%=minortable.get복수전공학점()%></td>
+									<td class="border-bottom border-right"><%=graduation.get필수교양()%></td>
+									<td class="border-bottom border-right"><%=graduation.get일반교양()%></td>
+									<td class="border-bottom border-right"><%=graduation.get봉사교육()%></td>
+									<td class="border-bottom border-right"><%=graduation.get심폐교육()%></td>
+									<td class="border-bottom border-right"><%=graduation.get봉사시간()%></td>
+								</tr>
+								<%
 									}
-							%>
+								%>
+								<tr>
+									<td class="border-bottom border-left border-right">나의현황?</td>
+									<td class="border-bottom border-right"><%=MajorbaseSum%></td>
+									<td class="border-bottom border-right"><%=MajorSum%></td>
+									<td class="border-bottom border-right"><%=MinorSum%></td>
+									<td class="border-bottom border-right"><%=GeneralSum2%></td>
+									<td class="border-bottom border-right"><%=GeneralSum1%></td>
+									<td class="border-bottom border-right">Pass</td>
+									<td class="border-bottom border-right">Fail</td>
+									<td class="border-bottom border-right">30</td>
+								</tr>
+								<tr>
+									<td class="border-bottom border-left border-right">남은학점!</td>
+									<td class="border-bottom border-right"><%=Majorbaseresult%></td>
+									<td class="border-bottom border-right"><%=Majorresult%></td>
+									<td class="border-bottom border-right"><%=Minorresult%></td>
+									<td class="border-bottom border-right"><%=Generalresult2%></td>
+									<td class="border-bottom border-right"><%=Generalresult1%></td>
+									<td class="border-bottom border-right">ㅋ</td>
+									<td class="border-bottom border-right">ㅋ</td>
+									<td class="border-bottom border-right">ㅋ</td>
+								</tr>
+							</table>
 						</div>
+						<h3>결과</h3>
+					</div>
+					<div class="col-md-12 well">
+						<legend id="anch1">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;초</legend>
+						<%
+							for (SubjectVO obj : MatchingSelectList) {
+								if (obj.get구분().equals("학과기초")) {
+						%>
+						<p><%=obj.get과목명()%></p>
 						<%
 							}
+							}
 						%>
-						<div class="col-md-12 well">
-							<legend id="anch3">필&nbsp;수&nbsp;&nbsp;&nbsp;교&nbsp;양</legend>
-							<%
-								for (SubjectVO obj : MatchingSelectList) {
-									if (obj.get구분().equals("필수교양")) {
-							%>
-							<p><%=obj.get과목명()%></p>
-							<%
-								}
-								}
-							%>
-						</div>
-						<div class="col-md-12 well">
-							<legend id="anch3">교&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;양</legend>
-							<%
-								for (SubjectVO obj : MatchingSelectList) {
-									if (obj.get구분().equals("일반교양")) {
-							%>
-							<p><%=obj.get과목명()%></p>
-							<%
-								}
-								}
-							%>
-						</div>
-						<div class="col-md-12 well">
-							<legend id="anch5">일반선택</legend>
-							<p>과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을
-								뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을
-								뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을
-								뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야</p>
-						</div>
-						
 					</div>
+					<div class="col-md-12 well">
+						<legend id="anch2">전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</legend>
+						<%
+							for (SubjectVO obj : MatchingSelectList) {
+								if (obj.get구분().equals("전공") && obj.get학과코드().equals(MajorNum)) {
+						%>
+						<p><%=obj.get과목명()%></p>
+						<%
+							}
+							}
+						%>
+					</div>
+					<%
+						if (MinorNum != null) {
+					%>
+					<div class="col-md-12 well">
+						<legend id="anch4">부전공</legend>
+						<%
+							for (SubjectVO obj : MatchingSelectList) {
+									if (obj.get구분().equals("전공") && obj.get학과코드().equals(MinorNum)) {
+						%>
+						<p><%=obj.get과목명()%></p>
+						<%
+							}
+								}
+						%>
+					</div>
+					<%
+						}
+					%>
+					<div class="col-md-12 well">
+						<legend id="anch3">필&nbsp;수&nbsp;&nbsp;&nbsp;교&nbsp;양</legend>
+						<%
+							for (SubjectVO obj : MatchingSelectList) {
+								if (obj.get구분().equals("필수교양")) {
+						%>
+						<p><%=obj.get과목명()%></p>
+						<%
+							}
+							}
+						%>
+					</div>
+					<div class="col-md-12 well">
+						<legend id="anch3">교&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;양</legend>
+						<%
+							for (SubjectVO obj : MatchingSelectList) {
+								if (obj.get구분().equals("일반교양")) {
+						%>
+						<p><%=obj.get과목명()%></p>
+						<%
+							}
+							}
+						%>
+					</div>
+					<div class="col-md-12 well">
+						<legend id="anch5">일반선택</legend>
+						<p>과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을
+							뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을
+							뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을
+							뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야</p>
+					</div>
+
 				</div>
 			</div>
 		</div>
-		</fieldset>
-		<script
-			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-		<script src="resources/js/bootstrap.min.js"></script>
-		<script src="resources/js/main.js"></script>
-		<script src="resources/js/jquery.js" type="text/javascript"></script>
-		<script src="resources/js/bootstrap.js" type="text/javascript"></script>
-		
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/main.js"></script>
+	<script src="resources/js/jquery.js" type="text/javascript"></script>
+	<script src="resources/js/bootstrap.js" type="text/javascript"></script>
+
 </body>
 </html>
