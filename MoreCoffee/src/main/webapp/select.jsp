@@ -55,15 +55,6 @@
 <link type="text/css" rel="stylesheet"
 	href="resources/css/multi-select.css">
 <link type="text/css" rel="stylesheet" href="resources/css/result.css">
-
-<script type="text/javascript">
-    function myfunction()
-    {
-    	<%
-		historyDAO.deleteHistory(studentNum);
-		%>
-    }
-</script>
 </head>
 
 <body>
@@ -416,11 +407,8 @@
 			<center>
 				<%-- <% selected가 널 이 아니면 전송하고 비워주고 %>  --%>
 				<button class="btn btn-danger btn-block" type="submit" name="submit"
-					onclick="myfunction()" value="결과보기"
-					style="max-width: 300px">결과보기</button>
+					onclick= <%="historyDAO.deleteHistory(studentNum)" %> value="결과보기"style="max-width: 300px">결과보기</button>
 				<%--    <% 값(selecte가)이 널이면 값채워달라고 alert띄워서 입력해달라고 하면 될 듯 %> --%>
-
-
 			</center>
 
 		</form>
@@ -435,8 +423,6 @@
 		<!--여기까지  -->
 	</form>
 	<!-- </div> 놀라운사실 : form이 from으로 되어있어서 안됐던거임-->
-
-
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
