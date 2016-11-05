@@ -56,10 +56,13 @@
 	href="resources/css/multi-select.css">
 <link type="text/css" rel="stylesheet" href="resources/css/result.css">
 
-<script>
-	function button1_click() {
-<%//여기서 history 비워주자%>
-	}
+<script type="text/javascript">
+    function myfunction()
+    {
+    	<%
+		historyDAO.deleteHistory(studentNum);
+		%>
+    }
 </script>
 </head>
 
@@ -406,9 +409,6 @@
 								}
 							%>
 						</select>
-						<%
-							historyDAO.deleteHistory(studentNum);
-						%>
 					</div>
 				</div>
 			</div>
@@ -416,7 +416,7 @@
 			<center>
 				<%-- <% selected가 널 이 아니면 전송하고 비워주고 %>  --%>
 				<button class="btn btn-danger btn-block" type="submit" name="submit"
-					onclick="return functionName()" value="결과보기"
+					onclick="myfunction()" value="결과보기"
 					style="max-width: 300px">결과보기</button>
 				<%--    <% 값(selecte가)이 널이면 값채워달라고 alert띄워서 입력해달라고 하면 될 듯 %> --%>
 
