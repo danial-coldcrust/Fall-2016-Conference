@@ -101,6 +101,7 @@ public class SubjectController implements Controller {
          //전공점수에 대한 +로 만들어주는 부분
          if((Integer.parseInt(graduation.get전공심화())<majorSum)){
 				excessSum = majorSum - (Integer.parseInt(graduation.get전공심화()));
+				//String fuck = "+"+excessSum;
 				mav.addObject("Majorresult", "+"+excessSum);
 			}else{
 				mav.addObject("Majorresult", (Integer.parseInt(graduation.get전공심화()) - majorSum)+"");

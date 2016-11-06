@@ -144,7 +144,9 @@
                         actionStr = "resultmodi.do";
                      }
                   %>
-				<form method="post" action=<%=actionStr%>>
+				<form method="post" action=<%=actionStr%>
+					onsubmit='return frmsubmit();'>
+					>
 					<!---------------------------------------------------------------------------------------------------------------------------->
 					<div class="page-content inset" data-spy="scroll"
 						data-target="#spy">
@@ -163,7 +165,8 @@
 							<legend id="anch1">학&nbsp;&nbsp;과&nbsp;&nbsp;기&nbsp;&nbsp;초</legend>
 							<div>
 								<div class>
-									<select multiple class="searchable" name="subject[]">
+									<select multiple class="searchable" name="subject[]"
+										id="isNull_1">
 										<!--학과기초 -- : 초기회원>-->
 										<%
                                  for (SubjectVO obj : subjectList) {
@@ -182,7 +185,8 @@
 							<legend id="anch2">전&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;공</legend>
 							<div>
 								<div class>
-									<select multiple class="searchable" name="subject[]">
+									<select multiple class="searchable" name="subject[]"
+										id="isNull_2">
 										<!--전공 -- : 초기회원>-->
 										<%
                                  for (SubjectVO obj : subjectList) {
@@ -197,28 +201,29 @@
 									</select>
 								</div>
 							</div>
-							 <legend id="anch3">일&nbsp;&nbsp;반&nbsp;&nbsp;교&nbsp;&nbsp;&nbsp;양</legend>
-		                     <div>
-		                        <div class>
-		                           <select multiple class="searchable" name="subject[]">
-		                              <!--일반교양 -- : 초기회원>-->
-		                              <%
+							<legend id="anch3">일&nbsp;&nbsp;반&nbsp;&nbsp;교&nbsp;&nbsp;&nbsp;양</legend>
+							<div>
+								<div class>
+									<select multiple class="searchable" name="subject[]"
+										id="isNull_3">
+										<!--일반교양 -- : 초기회원>-->
+										<%
 		                                 for (SubjectVO obj : subjectList2) {
 		                                       if (obj.get구분().equals("일반교양")) {
 		                              %>
-		                              <option value=<%=obj.get과목코드()%>><%=obj.get과목명()%>[<%=obj.get학점()%>]&nbsp;&nbsp;<%=obj.get학년()%>학년
-		                              </option>
-		                              <%
+										<option value=<%=obj.get과목코드()%>><%=obj.get과목명()%>[<%=obj.get학점()%>]&nbsp;&nbsp;<%=obj.get학년()%>학년
+										</option>
+										<%
 		                                       }
 		                                 }
 		                              %>
-		                           </select>
-		                        </div>
-		                     </div>
-		                     <legend id="anch4">필&nbsp;&nbsp;수&nbsp;&nbsp;교&nbsp;&nbsp;&nbsp;양</legend>
-		                     <div >
-		                        <div class'>
-		                           <select multiple class="searchable" name="subject[]">
+									</select>
+								</div>
+							</div>
+							<legend id="anch4">필&nbsp;&nbsp;수&nbsp;&nbsp;교&nbsp;&nbsp;&nbsp;양</legend>
+							<div>
+								<divclass'>
+		                           <select multiple class="searchable" name="subject[]" id ="isNull_4">
 		                              <!--일반교양 -- : 초기회원>-->
 		                              <%
 		                                 for (SubjectVO obj : subjectList2) {
@@ -236,7 +241,7 @@
   							<legend id="anch5">복수전공</legend>
 							<div>
 								<div class>
-									<select multiple class="searchable" name="subject[]"">
+									<select multiple class="searchable" name="subject[]" id ="isNull_5">
 										<%
                                  if (subjectList3 != null) {
                                        for (SubjectVO obj : subjectList3) {
@@ -260,7 +265,7 @@
 							<div>
 								<div class>
 
-									<select multiple class="searchable" name="subject[]">
+									<select multiple class="searchable" name="subject[]" id ="isNull_1">
 
 										<!--학과기초 -- : 기존 회원>-->
 										<%
@@ -288,7 +293,7 @@
 							<div>
 								<div class>
 
-									<select multiple class="searchable" name="subject[]">
+									<select multiple class="searchable" name="subject[]" id ="isNull_2">
 
 										<!--학과기초 -- : 기존 회원>-->
 										<%
@@ -316,7 +321,7 @@
 							<div>
 								<div class>
 
-									<select multiple class="searchable" name="subject[]">
+									<select multiple class="searchable" name="subject[]" id ="isNull_3">
 
 										<!--학과기초 -- : 기존 회원>-->
 										<%
@@ -344,7 +349,7 @@
 							<div>
 								<div class>
 
-									<select multiple class="searchable" name="subject[]">
+									<select multiple class="searchable" name="subject[]" id ="isNull_4">
 
 										<!--학과기초 -- : 기존 회원>-->
 										<%
@@ -371,7 +376,7 @@
 							<legend id="anch5">복&nbsp;&nbsp;수&nbsp;&nbsp;전&nbsp;&nbsp;&nbsp;공</legend>
 							<div>
 								<div class>
-									<select multiple class="searchable" name="subject[]">
+									<select multiple class="searchable" name="subject[]" id ="isNull_5">
 
 										<!--학과기초 -- : 기존 회원>-->
 										<%
@@ -403,13 +408,12 @@
 
 
 						</div>
-					</div>
+					
+			</div>
+	
 					<center>
 						<%-- <% selected가 널 이 아니면 전송하고 비워주고 %>  --%>
-						<button class="btn btn-danger btn-block" type="submit"
-							name="submit" onclick=<%="historyDAO.deleteHistory(studentNum)"%>
-							value="결과보기" style="max-width: 300px">결과보기</button>
-						<%--    <% 값(selecte가)이 널이면 값채워달라고 alert띄워서 입력해달라고 하면 될 듯 %> --%>
+							<input class="btn btn-danger btn-block" style="max-width: 300px" type='submit' name='submit' value="결과보기">
 					</center>
 				</form>
 				<form method="post" action="user_repair.do">
@@ -439,5 +443,16 @@
 	<script src="resources/js/application.js" type="text/javascript"></script>
 	<script src="resources/js/handlebars.js" type="text/javascript"></script>
 	<script src="resources/js/github-api.js" type="text/javascript"></script>
+	<script>
+	function frmsubmit(){
+		
+		if(!$('#isNull_1').val() && !$('#isNull_2').val()  && !$('#isNull_3').val()  && !$('#isNull_4').val() && !$('#isNull_5').val() ){
+			alert("적어도 하나는 선택해주세요 제발" );
+			return false;
+		}
+		
+		return true;
+	}			
+	</script>
 </body>
 </html>
