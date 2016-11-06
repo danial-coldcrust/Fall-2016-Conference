@@ -128,7 +128,7 @@ public class SubjectModiController implements Controller {
 			mav.addObject("Minorresult", (Integer.parseInt(minortable.get복수전공학점()) - minorSum) + "");
 			mav.addObject("Generalresult1", (Integer.parseInt(graduation.get일반교양()) - generalSum1) + "");
 			mav.addObject("Generalresult2", (Integer.parseInt(graduation.get필수교양()) - generalSum2) + "");
-			mav.addObject("MatchingSelectList", subjectList);
+			mav.addObject("MatchingSelectList", selectedList);
 			// 현재까지 들은 학점을 보여주기위한 값들........
 			mav.addObject("MajorSum", majorSum + "");
 			mav.addObject("MinorSum", minorSum + "");

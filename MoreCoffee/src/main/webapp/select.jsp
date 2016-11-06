@@ -198,8 +198,8 @@
 								</div>
 							</div>
 							 <legend id="anch3">일&nbsp;&nbsp;반&nbsp;&nbsp;교&nbsp;&nbsp;&nbsp;양</legend>
-		                     <div class='row'>
-		                        <div class='span12'>
+		                     <div>
+		                        <div class>
 		                           <select multiple class="searchable" name="subject[]">
 		                              <!--일반교양 -- : 초기회원>-->
 		                              <%
@@ -216,8 +216,8 @@
 		                        </div>
 		                     </div>
 		                     <legend id="anch4">필&nbsp;&nbsp;수&nbsp;&nbsp;교&nbsp;&nbsp;&nbsp;양</legend>
-		                     <div class='row'>
-		                        <div class='span12'>
+		                     <div >
+		                        <div class'>
 		                           <select multiple class="searchable" name="subject[]">
 		                              <!--일반교양 -- : 초기회원>-->
 		                              <%

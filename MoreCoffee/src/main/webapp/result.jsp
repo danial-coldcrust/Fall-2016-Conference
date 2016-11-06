@@ -236,6 +236,7 @@ com.ppp.grade.minortable.persistence.MinortableVO"%>
 							</table>
 						</div>
 						<h3>결과</h3>
+						<h6>+ : 초과된 학점입니다.</h6>
 					</div>
 					<div class="col-md-12 well">
 						<legend id="anch1">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;초</legend>

@@ -37,6 +37,8 @@ public class SubjectSideController implements Controller {
 				int generalSum2 = 0;
 				//부전공용 계산 변수
 				int minorSum = 0;
+				//남은학점 계산 변수
+				int excessSum =0;
 						
 			SelectVO selectVO = new SelectVO();
 			SelectDAO selectDAO = new SelectDAO();
@@ -60,22 +62,20 @@ public class SubjectSideController implements Controller {
 
 			for (SubjectVO obj : subjectList) {
 				if (obj.get구분().equals("일반교양")) {
-					System.out.println("교양과목");
-					generalSum1 += Integer.parseInt(obj.get학점());
-				}
-				else if((obj.get구분().equals("필수교양"))){
-					generalSum2 += Integer.parseInt(obj.get학점());
-				}
-				//전공학과코드가 아니면 부전공에 더해줍니다.
-				else if((obj.get학과코드()==MajorNum)&&(obj.get구분() != "학과기초")){
-					majorSum += Integer.parseInt(obj.get학점());
-				}
-				else if((obj.get구분().equals("전공")) && (obj.get학과코드() != MajorNum)){
-					minorSum += Integer.parseInt(obj.get학점());
-				}
-				else{
-					majorbaseSum +=Integer.parseInt(obj.get학점());
-				}
+		            generalSum1 += Integer.parseInt(obj.get학점());
+		         }
+		         else if((obj.get구분().equals("필수교양"))){
+		            generalSum2 += Integer.parseInt(obj.get학점());
+		         }
+		         else if(obj.get학과코드().equals(MajorNum)&&obj.get구분().equals("전공")){
+		            majorSum += Integer.parseInt(obj.get학점());
+		         }
+		         else if(obj.get구분().equals("학과기초") && obj.get학과코드().equals(MajorNum)){
+		            majorbaseSum +=Integer.parseInt(obj.get학점());
+		         }
+		         else{
+		            minorSum += Integer.parseInt(obj.get학점());
+		         }
 			}
 			System.out.println("주전공 =" +majorSum);
 			System.out.println("부전공 = "+minorSum);
@@ -96,10 +96,34 @@ public class SubjectSideController implements Controller {
 				System.out.println(graduation.get일반교양());
 		
 				// 3. 연산
-				mav.addObject("Majorresult", (Integer.parseInt(graduation.get전공심화()) - majorSum)+"");
-				mav.addObject("Generalresult1", (Integer.parseInt(graduation.get일반교양()) - generalSum1)+"");
-				mav.addObject("Generalresult2", (Integer.parseInt(graduation.get필수교양()) - generalSum2)+"");
-				mav.addObject("Majorbaseresult", (Integer.parseInt(graduation.get학과기초()) - majorbaseSum)+"");
+				 //전공점수에 대한 +로 만들어주는 부분
+		         if((Integer.parseInt(graduation.get전공심화())<majorSum)){
+						excessSum = majorSum - (Integer.parseInt(graduation.get전공심화()));
+						mav.addObject("Majorresult", "+"+excessSum);
+					}else{
+						mav.addObject("Majorresult", (Integer.parseInt(graduation.get전공심화()) - majorSum)+"");
+					}
+		       //일반교양에 대한 +로 만들어주는 부분
+		         if((Integer.parseInt(graduation.get일반교양())<generalSum1)){
+						excessSum = generalSum1 - (Integer.parseInt(graduation.get일반교양()));
+						mav.addObject("Generalresult1", "+"+excessSum);
+					}else{
+						mav.addObject("Generalresult1", (Integer.parseInt(graduation.get일반교양()) - generalSum1)+"");
+					}
+		         //필수교양에 대한 +로 만들어주는 부분
+		         if((Integer.parseInt(graduation.get필수교양())<generalSum2)){
+						excessSum = generalSum2 - (Integer.parseInt(graduation.get필수교양()));
+						mav.addObject("Generalresult2", "+"+excessSum);
+					}else{
+						mav.addObject("Generalresult2", (Integer.parseInt(graduation.get필수교양()) - generalSum2)+"");
+					}
+		         //학과기초에 대한 +로 만들어주는 부분
+		         if((Integer.parseInt(graduation.get학과기초())<majorbaseSum)){
+						excessSum = majorbaseSum - (Integer.parseInt(graduation.get학과기초()));
+						mav.addObject("Majorbaseresult", "+"+excessSum);
+					}else{
+						mav.addObject("Majorbaseresult", (Integer.parseInt(graduation.get학과기초()) - majorbaseSum)+"");
+					}
 				mav.addObject("MatchingSelectList",subjectList);
 				mav.addObject("MajorSum", majorSum+"");
 				mav.addObject("GeneralSum1", generalSum1+"");
@@ -124,13 +148,43 @@ public class SubjectSideController implements Controller {
 				System.out.println("일반교양 = "+graduation.get일반교양());
 		
 				// 3. 연산
-				mav.addObject("Majorresult", (Integer.parseInt(minortable.get전공학점()) - majorSum)+"");
-				mav.addObject("Majorbaseresult", (Integer.parseInt(graduation.get학과기초()) - majorbaseSum)+"");
-				mav.addObject("Minorresult", (Integer.parseInt(minortable.get복수전공학점()) - minorSum)+"");
-				mav.addObject("Generalresult1", (Integer.parseInt(graduation.get일반교양()) - generalSum1)+"");
-				mav.addObject("Generalresult2", (Integer.parseInt(graduation.get필수교양()) - generalSum2)+"");
-				mav.addObject("MatchingSelectList", subjectList);
+				//전공점수에 대한 +로 만들어주는 부분
+		         if((Integer.parseInt(minortable.get전공학점())<majorSum)){
+						excessSum = majorSum - (Integer.parseInt(minortable.get전공학점()));
+						mav.addObject("Majorresult", "+"+excessSum);
+					}else{
+						mav.addObject("Majorresult", (Integer.parseInt(minortable.get전공학점()) - majorSum)+"");
+					}
+		       //복수전공에 대한 +로 만들어주는 부분
+		         if((Integer.parseInt(minortable.get복수전공학점())<minorSum)){
+						excessSum = minorSum - (Integer.parseInt(minortable.get복수전공학점()));
+						mav.addObject("Minorresult", "+"+excessSum);
+					}else{
+						mav.addObject("Minorresult", (Integer.parseInt(minortable.get복수전공학점()) - minorSum)+"");
+					}
+		       //일반교양에 대한 +로 만들어주는 부분
+		         if((Integer.parseInt(graduation.get일반교양())<generalSum1)){
+						excessSum = generalSum1 - (Integer.parseInt(graduation.get일반교양()));
+						mav.addObject("Generalresult1", "+"+excessSum);
+					}else{
+						mav.addObject("Generalresult1", (Integer.parseInt(graduation.get일반교양()) - generalSum1)+"");
+					}
+		         //필수교양에 대한 +로 만들어주는 부분
+		         if((Integer.parseInt(graduation.get필수교양())<generalSum2)){
+						excessSum = generalSum2 - (Integer.parseInt(graduation.get필수교양()));
+						mav.addObject("Generalresult2", "+"+excessSum);
+					}else{
+						mav.addObject("Generalresult2", (Integer.parseInt(graduation.get필수교양()) - generalSum2)+"");
+					}
+		         //학과기초에 대한 +로 만들어주는 부분
+		         if((Integer.parseInt(graduation.get학과기초())<majorbaseSum)){
+						excessSum = majorbaseSum - (Integer.parseInt(graduation.get학과기초()));
+						mav.addObject("Majorbaseresult", "+"+excessSum);
+					}else{
+						mav.addObject("Majorbaseresult", (Integer.parseInt(graduation.get학과기초()) - majorbaseSum)+"");
+					}
 				//현재까지 들은 학점을 보여주기위한 값들........
+		         mav.addObject("MatchingSelectList", subjectList);
 				mav.addObject("MajorSum", majorSum+"");
 				mav.addObject("MinorSum",  minorSum+"");
 				mav.addObject("GeneralSum1", generalSum1+"");
