@@ -35,12 +35,13 @@
 				<prop key="/subjectupdate.do">subjectupdate</prop>
 				<prop key="/subjectdelete.do">subjectdelete</prop>
 				<prop key="/subjectgetlist.do">subjectgetlist</prop>
-
+				<prop key="/resultmodi.do">resultmodi</prop>
+				
 				<prop key="/RsltToSltController.do">RsltToSlt</prop>
 			</props>
 		</property>
 	</bean>
-
+	<bean class="com.ppp.grade.subject.controller.SubjectModiController" id="resultmodi" />
 	<bean class="com.ppp.grade.user.controller.LoginController" id="login" />
 	<bean class="com.ppp.grade.user.controller.SignupController" id="signup" />
 	<bean class="com.ppp.grade.subject.controller.SubjectController"

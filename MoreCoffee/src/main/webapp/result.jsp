@@ -14,8 +14,8 @@ com.ppp.grade.minortable.persistence.MinortableVO"%>
 <%
 	//얼마나 남았는지 알려주기 위한 계산값.....
 	String Majorresult = (String) request.getAttribute("Majorresult");
-	String Generalresult1 = (String) request.getAttribute("Generalresult1");
-	String Generalresult2 = (String) request.getAttribute("Generalresult2");
+	String Generalresult1 = (String) request.getAttribute("Generalresult1");	//일반교양
+	String Generalresult2 = (String) request.getAttribute("Generalresult2");	//필수교양
 	String Minorresult = (String) request.getAttribute("Minorresult");
 	String Majorbaseresult = (String) request.getAttribute("Majorbaseresult");
 	//현재 들은 학점을 계산하기위한값.....
@@ -122,9 +122,10 @@ com.ppp.grade.minortable.persistence.MinortableVO"%>
 							<ul class="dropdown-menu">
 								<li><a href="#anch1">학과기초</a></li>
 								<li><a href="#anch2">전공</a></li>
-								<li><a href="#anch3">교양</a></li>
-								<li><a href="#anch4">복수전공</a></li>
-								<li><a href="#anch5">일반선택</a></li>
+								<li><a href="#anch3">일반교양</a></li>
+								<li><a href="#anch4">필수교양</a></li>
+								<li><a href="#anch5">복수전공</a></li>
+								<!-- <li><a href="#anch6">일반선택</a></li> -->
 								<li class="divider"></li>
 								<li><a href="#">봉사시간</a></li>
 								<li><a href="#">교육</a></li>
@@ -240,7 +241,7 @@ com.ppp.grade.minortable.persistence.MinortableVO"%>
 						<legend id="anch1">학&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;초</legend>
 						<%
 							for (SubjectVO obj : MatchingSelectList) {
-								if (obj.get구분().equals("학과기초")) {
+								if (obj.get구분().equals("학과기초")&& obj.get학과코드().equals(MajorNum)) {
 						%>
 						<p><%=obj.get과목명()%></p>
 						<%
@@ -264,7 +265,7 @@ com.ppp.grade.minortable.persistence.MinortableVO"%>
 						if (MinorNum != null) {
 					%>
 					<div class="col-md-12 well">
-						<legend id="anch4">부전공</legend>
+						<legend id="anch5">복수전공</legend>
 						<%
 							for (SubjectVO obj : MatchingSelectList) {
 									if (obj.get구분().equals("전공") && obj.get학과코드().equals(MinorNum)) {
@@ -279,10 +280,10 @@ com.ppp.grade.minortable.persistence.MinortableVO"%>
 						}
 					%>
 					<div class="col-md-12 well">
-						<legend id="anch3">필&nbsp;수&nbsp;&nbsp;&nbsp;교&nbsp;양</legend>
+						<legend id="anch4">필&nbsp;수&nbsp;&nbsp;&nbsp;교&nbsp;양</legend>
 						<%
 							for (SubjectVO obj : MatchingSelectList) {
-								if (obj.get구분().equals("필수교양")) {
+								if (obj.get구분().equals("필수교양")&& obj.get학과코드().equals("99")) {
 						%>
 						<p><%=obj.get과목명()%></p>
 						<%
@@ -291,10 +292,10 @@ com.ppp.grade.minortable.persistence.MinortableVO"%>
 						%>
 					</div>
 					<div class="col-md-12 well">
-						<legend id="anch3">교&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;양</legend>
+						<legend id="anch3">일&nbsp;&nbsp;반&nbsp;&nbsp;교&nbsp;&nbsp;양</legend>
 						<%
 							for (SubjectVO obj : MatchingSelectList) {
-								if (obj.get구분().equals("일반교양")) {
+								if (obj.get구분().equals("일반교양")&& obj.get학과코드().equals("99")) {
 						%>
 						<p><%=obj.get과목명()%></p>
 						<%
@@ -302,13 +303,13 @@ com.ppp.grade.minortable.persistence.MinortableVO"%>
 							}
 						%>
 					</div>
-					<div class="col-md-12 well">
-						<legend id="anch5">일반선택</legend>
+					<!-- <div class="col-md-12 well">
+						<legend id="anch6">일반선택</legend>
 						<p>과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을
 							뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을
 							뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을
 							뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야과목명을 뿌려줄거야</p>
-					</div>
+					</div> -->
 
 				</div>
 			</div>

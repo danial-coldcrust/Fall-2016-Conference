@@ -1,50 +1,55 @@
 ﻿#wrapper {
-	padding-top: 0px;
-}
-
-#wrapper.active {
-	padding-left: 0;
+   padding-top: 0px;
+   padding-left: 30px;
+   padding-right: 30px;
+   margin: 10px;
 }
 
 #page-content-wrapper {
-	padding-top: 20px;
-	width: 100%;
+   padding-top: 0px;
+   width: 100%;
 }
 
 .content-header {
-	height: 65px;
-	line-height: 65px;
+   height: 65px;
+   line-height: 65px;
 }
 
 .content-header h1 {
-	margin: 0;
-	margin-left: 20px;
-	line-height: 65px;
-	display: inline-block;
+   margin: 0;
+   margin-left: 20px;
+   line-height: 65px;
+   display: inline-block;
 }
 
 .btn-menu {
-	color: #000;
+   color: #000;
 }
 
 .inset {
-	padding: 70px;
+   padding:60px;
+   margin-bottom: -20px;
 }
-
+----------------------
 legend{
-	text-align: center;	
+   text-align: center;   
+}
+.span12{
+   position:relative;
+   margin-left: 15%;
+   margin-right: auto;
 }
 
 @media ( max-width :767px) {
-	#wrapper {
-		padding-left: 0;
-	}
-	
-	#wrapper.active {
-		position: relative;
-		left: 250px;
-	}
-	.inset {
-		padding: 70px;
-	}
+   #wrapper {
+      padding-left: 0;
+   }
+   
+   #wrapper.active {
+      position: relative;
+      left: 250px;
+   }
+   .inset {
+      padding: 50px;
+   }
 }

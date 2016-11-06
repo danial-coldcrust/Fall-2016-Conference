@@ -85,7 +85,7 @@ public class LoginController implements Controller {
 
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) {
-		
+		String done = "login";
 		String num = request.getParameter("username");
 		String password = request.getParameter("password");
 		UserVO vo = new UserVO();
@@ -130,7 +130,7 @@ public class LoginController implements Controller {
 				subjectList3 = subjectDAO.getSubjectWithMinorNum(user.get복수전공());
 				mav.addObject("subjectList3", subjectList3);
 			}
-			
+			mav.addObject("done", done);
 			//학번
 			mav.addObject("num",num);
 			
@@ -138,7 +138,8 @@ public class LoginController implements Controller {
 			LoginController loginController = new LoginController();
 			SelectDAO selectDAO = new SelectDAO();  //사실 DAO를 new 하는 것은 옳은 방식은 아님(이제부터라도)
 			List<SelectVO> selectList = selectDAO.getSubjectList(num);
-			
+
+			mav.addObject("MatchingSelectList", selectList);
 			
 			// 관리자
 			if(user.get학번().equals("0")){
@@ -151,7 +152,6 @@ public class LoginController implements Controller {
 				}
 			// 정보 x 회원
 			else {
-				
 				mav.setViewName("select.jsp");
 			}
 		}else{

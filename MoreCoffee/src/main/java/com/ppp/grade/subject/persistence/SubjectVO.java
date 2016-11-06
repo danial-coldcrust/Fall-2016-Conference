@@ -70,5 +70,21 @@ public class SubjectVO {
 		return "SubjectVO [ 과목코드:" + 과목코드 + ",과목명:" + 과목명 + ",구분:" + 구분 + ",학점:" + 학점 + ",학년:" + 학년 + ",학기:" + 학기
 				+ ",학과코드:" + 학과코드 + "]";
 	}
+	 @Override
+	    public boolean equals(Object obj) {
+	        if (this == obj)
+	            return true;
+	        if (obj == null)
+	            return false;
+	        if (getClass() != obj.getClass())
+	            return false;
+	        SubjectVO other = (SubjectVO) obj;
+	        if (과목코드 == null) {
+	            if (other.과목코드 != null)
+	                return false;
+	        } else if (!과목코드.equals(other.과목코드))
+	            return false;
+	        return true;
+	    }
 
 }

@@ -17,7 +17,7 @@
 }
 
 input[type="text" i]{
-	width: 250px;
+   width: 250px;
 }
 
 .ms-container .ms-list{
@@ -40,7 +40,7 @@ input[type="text" i]{
 }
 
 .ms-container .ms-selectable{
-  margin-right: 20%;
+  margin-right: 15%;
 }
 
 .ms-container .ms-list.ms-focus{

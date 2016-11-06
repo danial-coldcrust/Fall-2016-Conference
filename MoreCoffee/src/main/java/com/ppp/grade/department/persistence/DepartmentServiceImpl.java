@@ -12,12 +12,10 @@ public class DepartmentServiceImpl implements DepartmentService{
 	private DepartmentDAO departmentDAO;
 
 	public DepartmentVO getDepartment(DepartmentVO vo) {
-		// TODO Auto-generated method stub
 		return departmentDAO.getDepartment(vo);
 	}
 
 	public List<DepartmentVO> getDepartmentList(DepartmentVO vo) {
-		// TODO Auto-generated method stub
 		return departmentDAO.getDepartmentList(vo);
 	}
 }
